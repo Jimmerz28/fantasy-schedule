@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { connect } from "react-redux";
+import { fetchPosts } from "./Actions";
+import store from "./Store";
+
+const mapStateToProps = state => {
+    return {
+        events: state.events
+    }
+}
 
 class App extends Component {
 
     componentDidMount() {
-        fetch('http://localhost:3001/events')
-            .then(res => res.json())
-            .then(json => console.info(json.length));
+        store.dispatch(fetchPosts());
     }
 
     render() {
@@ -26,4 +33,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default connect(mapStateToProps, null)(App);
