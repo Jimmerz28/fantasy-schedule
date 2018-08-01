@@ -7,6 +7,7 @@ import { fetchPosts } from "./Actions";
 import store from "./Store";
 import EventList from "./components/EventList";
 import TagList from "./components/Tags";
+import Nav from "./components/Nav";
 
 const mapStateToProps = state => {
     return {
@@ -23,6 +24,7 @@ class App extends Component {
         return (
             <main>
                 <TagList tags={this.props.tags} />
+                <Nav days={this.props.days} />
                 <EventList events={this.props.events} />
             </main>
         );

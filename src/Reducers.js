@@ -1,32 +1,35 @@
 import { combineReducers } from "redux";
 
-import { createDate } from "./helpers";
+import { min, max, eachDayOfInterval } from "date-fns";
 
 import { RECEIVE_EVENTS } from "./Actions";
 
-function events(state = [], action) {
-    switch(action.type) {
+function events(state = [], {type, events}) {
+    switch(type) {
 
         case RECEIVE_EVENTS:
-
-            return action.events.map(event => {
-
-                event["Start Date & Time"] = createDate(event["Start Date & Time"]);
-                event["End Date & Time"] = createDate(event["End Date & Time"]);
-                event["Last Modified"] = createDate(event["Last Modified"], false);
-
-                return event;
-            });
-
+            return events;
         default:
             return state;
     }
 }
 
-function tags(state = [], action) {
-    switch (action.type) {
+function tags(state = [], {type, events}) {
+    switch (type) {
         case RECEIVE_EVENTS:
-            return [...new Set(action.events.map(event => event['Event Type']))];
+            return [...new Set(events.map(event => event['Event Type']))];
+        default:
+            return state;
+    }
+}
+
+function days(state = [], {type, events}) {
+    switch(type) {
+        case RECEIVE_EVENTS:
+
+            const dates = events.map(event => event["Start Date & Time"]);
+
+            return eachDayOfInterval({ start: min(dates), end: max(dates) });
         default:
             return state;
     }
@@ -39,7 +42,8 @@ function saved(state = [], action) {
 const genconApp = combineReducers({
     events,
     tags,
-    saved
+    saved,
+    days
 });
 
 export default genconApp;

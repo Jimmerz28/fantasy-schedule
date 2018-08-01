@@ -1,4 +1,5 @@
 // See: https://redux.js.org/advanced/async-actions#actions-js-asynchronous
+import { createDate } from "./helpers";
 
 export const REQUEST_EVENTS = "EVENTS::REQUEST";
 function requestEvents() {
@@ -23,7 +24,16 @@ export function fetchPosts() {
             .then(res => res.json(), error => console.error(error))
 
             .then(json => {
-                dispatch(receiveEvents(json));
+
+                const asDates = json.map(event => {
+                    event["Start Date & Time"] = createDate(event["Start Date & Time"]);
+                    event["End Date & Time"] = createDate(event["End Date & Time"]);
+                    event["Last Modified"] = createDate(event["Last Modified"], false);
+
+                    return event;
+                });
+
+                dispatch(receiveEvents(asDates));
             });
     };
 }
