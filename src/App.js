@@ -21,10 +21,16 @@ class App extends Component {
     }
 
     render() {
+        const days = this.props.events.reduce((acc, event) => {
+            acc.push(event.day);
+
+            return acc;
+        }, []);
+
         return (
             <main>
                 <TagList tags={this.props.tags} />
-                <Nav days={this.props.days} />
+                <Nav days={days} />
                 <EventList events={this.props.events} />
             </main>
         );

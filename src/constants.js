@@ -19,3 +19,4 @@ export const colors = [
 
 export const dateTimeFormat = "MM/dd/yyyy hh:mm aaa";
 export const dateFormat = "M/dd/yyyy";
+export const headerDateFormat = "eeee, LLL d";

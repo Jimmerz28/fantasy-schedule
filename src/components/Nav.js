@@ -2,7 +2,13 @@ import React from 'react';
 
 const Nav = ({ days }) => {
 
-    const list = days.map(day => <li key={day}>{day.toString()}</li>);
+    const list = days.map(day => {
+        return <li key={day}>
+                <a>
+                    {day}
+                </a>
+            </li>;
+    });
 
     return (
         <nav>
