@@ -4,7 +4,7 @@ const Nav = ({ days }) => {
 
     const list = days.map(day => {
         return <li key={day}>
-                <a>
+                <a href={`#${day}`}>
                     {day}
                 </a>
             </li>;
