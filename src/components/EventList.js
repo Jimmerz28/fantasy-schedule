@@ -1,15 +1,29 @@
 import React from 'react';
 
-const EventList = ({ events }) => {
+const EventList = ({ events, tags }) => {
 
     const list = events.map( ({day, events}) => {
 
-        const daysEvents = events.map(event => (
+        const daysEvents = events
+            .filter(event => {
 
-            <li key={event["Game ID"]}>
-                <p>{event["Title"]}</p>
-            </li>
-        ));
+                // First check to see if we even have anything to filter
+                if (tags.length === 0) {
+
+                    // If we don't just show all events
+                    return event;
+                }
+
+                // Otherwise check if our event type should be filtered out
+                return tags.includes(event["Event Type"]);
+            })
+            .map(event => (
+
+                <li key={event["Game ID"]}>
+                    <p>{event["Title"]}</p>
+                    <p>{event["Event Type"]}</p>
+                </li>
+            ));
 
     return (
         <div key={day} id={day}>
@@ -20,7 +34,11 @@ const EventList = ({ events }) => {
 
     });
 
-    return <ul>{list}</ul>;
+    return (
+        <div>
+            <ul>{list}</ul>
+        </div>
+    );
 }
 
 export default EventList;

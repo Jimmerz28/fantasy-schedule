@@ -37,3 +37,19 @@ export function fetchPosts() {
             });
     };
 }
+
+export const ADD_TAG = "TAG::ADD";
+export function addTag(tag) {
+    return {
+        type: ADD_TAG,
+        tag
+    }
+}
+
+export const REMOVE_TAG = "TAG::REMOVE";
+export function removeTag(tag) {
+    return {
+        type: REMOVE_TAG,
+        tag
+    }
+}

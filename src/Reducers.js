@@ -1,7 +1,7 @@
 import { format, compareAsc, parse } from "date-fns";
 import { combineReducers } from "redux";
 
-import { RECEIVE_EVENTS } from "./Actions";
+import { RECEIVE_EVENTS, ADD_TAG, REMOVE_TAG } from "./Actions";
 import { headerDateFormat } from "./constants";
 
 function events(state = [], {type, events}) {
@@ -32,6 +32,7 @@ function events(state = [], {type, events}) {
 
                 return compareAsc(first, next);
             });
+
         default:
             return state;
     }
@@ -46,6 +47,19 @@ function tags(state = [], {type, events}) {
     }
 }
 
+function filter(state = [], {type, tag}) {
+    switch(type) {
+
+        // @NOTE: Not sure if we need add/remove to be separate
+        case ADD_TAG:
+            return [...state, tag];
+        case REMOVE_TAG:
+            return state.filter(current => current !== tag);
+        default:
+            return state;
+    }
+}
+
 function saved(state = [], action) {
     return state;
 }
@@ -53,7 +67,8 @@ function saved(state = [], action) {
 const genconApp = combineReducers({
     events,
     tags,
-    saved
+    saved,
+    filter
 });
 
 export default genconApp;
