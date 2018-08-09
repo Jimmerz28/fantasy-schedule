@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EventList = ({ events, tags }) => {
+const EventList = ({ events, tags, onFav }) => {
 
     const list = events.map(({ day, events }) => {
 
@@ -24,8 +24,8 @@ const EventList = ({ events, tags }) => {
                     <li key={id}>
                         <p>{event["Title"]}</p>
                         <p>{event["Event Type"]}</p>
-                        <label htmlFor={`fav-${id}`}>Favorite</label>
-                        <input type="checkbox" name={`fav-${id}`} id={`fav-${id}`} />
+                        <label htmlFor={id}>Favorite</label>
+                        <input type="checkbox" name={id} id={id} onChange={onFav} />
                     </li>
                 );
             });

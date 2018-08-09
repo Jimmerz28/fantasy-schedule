@@ -62,7 +62,7 @@ export function addFavorite(eventID) {
     }
 }
 
-export const REMOVE_FAVORITE = "FAVORITE::ADD";
+export const REMOVE_FAVORITE = "FAVORITE::REMOVE";
 export function removeFavorite(eventID) {
     return {
         type: REMOVE_FAVORITE,

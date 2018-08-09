@@ -65,7 +65,7 @@ function favorites(state = [], { type, eventID }) {
         case ADD_FAVORITE:
             return [...state, eventID];
         case REMOVE_FAVORITE:
-            return state.filter(fav => fav !== eventID);
+            return state.filter(current => current !== eventID);
         default:
             return state;
     }
