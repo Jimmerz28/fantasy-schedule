@@ -1,11 +1,11 @@
-import { format, compareAsc, parse } from "date-fns";
+import { compareAsc, format, parse } from "date-fns";
 import { combineReducers } from "redux";
 
-import { RECEIVE_EVENTS, ADD_TAG, REMOVE_TAG } from "./Actions";
+import { ADD_FAVORITE, ADD_TAG, RECEIVE_EVENTS, REMOVE_FAVORITE, REMOVE_TAG } from "./Actions";
 import { headerDateFormat } from "./constants";
 
-function events(state = [], {type, events}) {
-    switch(type) {
+function events(state = [], { type, events }) {
+    switch (type) {
 
         case RECEIVE_EVENTS:
 
@@ -15,7 +15,7 @@ function events(state = [], {type, events}) {
                 const day = format(event["Start Date & Time"], headerDateFormat);
 
                 if (!acc.find(chunk => chunk.day === day)) {
-                    acc.push({ day, events: []});
+                    acc.push({ day, events: [] });
                 }
 
                 const found = acc.find(chunk => chunk.day === day);
@@ -38,7 +38,7 @@ function events(state = [], {type, events}) {
     }
 }
 
-function tags(state = [], {type, events}) {
+function tags(state = [], { type, events }) {
     switch (type) {
         case RECEIVE_EVENTS:
             return [...new Set(events.map(event => event['Event Type']))];
@@ -47,8 +47,8 @@ function tags(state = [], {type, events}) {
     }
 }
 
-function filter(state = [], {type, tag}) {
-    switch(type) {
+function filter(state = [], { type, tag }) {
+    switch (type) {
 
         // @NOTE: Not sure if we need add/remove to be separate
         case ADD_TAG:
@@ -60,14 +60,21 @@ function filter(state = [], {type, tag}) {
     }
 }
 
-function saved(state = [], action) {
-    return state;
+function favorites(state = [], { type, eventID }) {
+    switch (type) {
+        case ADD_FAVORITE:
+            return [...state, eventID];
+        case REMOVE_FAVORITE:
+            return state.filter(fav => fav !== eventID);
+        default:
+            return state;
+    }
 }
 
 const genconApp = combineReducers({
     events,
     tags,
-    saved,
+    favorites,
     filter
 });
 

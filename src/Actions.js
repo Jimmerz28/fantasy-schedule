@@ -17,7 +17,7 @@ function receiveEvents(events) {
 }
 
 export function fetchPosts() {
-    return function(dispatch) {
+    return function (dispatch) {
         dispatch(requestEvents);
 
         return fetch("http://localhost:3001/events")
@@ -51,5 +51,21 @@ export function removeTag(tag) {
     return {
         type: REMOVE_TAG,
         tag
+    }
+}
+
+export const ADD_FAVORITE = "FAVORITE::ADD";
+export function addFavorite(eventID) {
+    return {
+        type: ADD_FAVORITE,
+        eventID
+    }
+}
+
+export const REMOVE_FAVORITE = "FAVORITE::ADD";
+export function removeFavorite(eventID) {
+    return {
+        type: REMOVE_FAVORITE,
+        eventID
     }
 }

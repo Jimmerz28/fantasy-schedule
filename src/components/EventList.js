@@ -2,7 +2,7 @@ import React from 'react';
 
 const EventList = ({ events, tags }) => {
 
-    const list = events.map( ({day, events}) => {
+    const list = events.map(({ day, events }) => {
 
         const daysEvents = events
             .filter(event => {
@@ -17,20 +17,25 @@ const EventList = ({ events, tags }) => {
                 // Otherwise check if our event type should be filtered out
                 return tags.includes(event["Event Type"]);
             })
-            .map(event => (
+            .map(event => {
+                const id = event["Game ID"];
 
-                <li key={event["Game ID"]}>
-                    <p>{event["Title"]}</p>
-                    <p>{event["Event Type"]}</p>
-                </li>
-            ));
+                return (
+                    <li key={id}>
+                        <p>{event["Title"]}</p>
+                        <p>{event["Event Type"]}</p>
+                        <label htmlFor={`fav-${id}`}>Favorite</label>
+                        <input type="checkbox" name={`fav-${id}`} id={`fav-${id}`} />
+                    </li>
+                );
+            });
 
-    return (
-        <div key={day} id={day}>
+        return (
+            <div key={day} id={day}>
                 <h2>{day}</h2>
                 <ul>{daysEvents}</ul>
-        </div>
-    );
+            </div>
+        );
 
     });
 
