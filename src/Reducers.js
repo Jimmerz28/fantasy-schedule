@@ -1,26 +1,28 @@
+// @flow
+
 import { compareAsc, format, parse } from "date-fns";
 import { combineReducers } from "redux";
 
-import { ADD_FAVORITE, ADD_TAG, RECEIVE_EVENTS, REMOVE_FAVORITE, REMOVE_TAG } from "./Actions";
+import { ADD_FAVORITE, ADD_TAG, FILTER_FAVORITES, RECEIVE_EVENTS, REMOVE_FAVORITE, REMOVE_TAG } from "./Actions";
 import { headerDateFormat } from "./constants";
+import type { VanillaEvent, DaysEvents } from "./types";
 
-function events(state = [], { type, events }) {
+function events(state = [], { type, events }: { type: string, events: Array<VanillaEvent> }) {
     switch (type) {
 
         case RECEIVE_EVENTS:
 
             // We want to split up the date events into days
-            const chunked = events.reduce((acc, event) => {
+            const chunked = events.reduce((acc: Array<DaysEvents>, event: VanillaEvent) => {
 
-                const day = format(event["Start Date & Time"], headerDateFormat);
+                const day: string = format(event["Start Date & Time"], headerDateFormat);
+                const found: void | DaysEvents = acc.find(chunk => chunk.day === day);
 
-                if (!acc.find(chunk => chunk.day === day)) {
+                if (found) {
+                    found.events.push(event);
+                } else {
                     acc.push({ day, events: [] });
                 }
-
-                const found = acc.find(chunk => chunk.day === day);
-
-                found.events.push(event);
 
                 return acc;
 
