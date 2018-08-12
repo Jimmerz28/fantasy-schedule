@@ -69,3 +69,11 @@ export function removeFavorite(eventID) {
         eventID
     }
 }
+
+export const FILTER_FAVORITES = "FAVORITES::FILTER";
+export function filterFavs(checked) {
+    return {
+        type: FILTER_FAVORITES,
+        checked
+    }
+}

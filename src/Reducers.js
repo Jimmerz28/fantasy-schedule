@@ -47,14 +47,26 @@ function tags(state = [], { type, events }) {
     }
 }
 
-function filter(state = [], { type, tag }) {
+const filters = {
+    tags: [],
+    onlyFavs: false
+};
+function filter(state = filters, { type, tag, checked = false }) {
     switch (type) {
 
         // @NOTE: Not sure if we need add/remove to be separate
         case ADD_TAG:
-            return [...state, tag];
+            return Object.assign(state, {
+                tags: [...state.tags, tag]
+            });
         case REMOVE_TAG:
-            return state.filter(current => current !== tag);
+            return Object.assign(state, {
+                tags: state.tags.filter(current => current !== tag)
+            });
+        case FILTER_FAVORITES:
+            return Object.assign(state, {
+                onlyFavs: checked
+            });
         default:
             return state;
     }

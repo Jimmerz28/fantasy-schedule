@@ -3,7 +3,7 @@ import "./App.css";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { fetchPosts, addTag, removeTag, addFavorite, removeFavorite } from "./Actions";
+import { fetchPosts, addTag, removeTag, addFavorite, removeFavorite, filterFavs } from "./Actions";
 import store from "./Store";
 import EventList from "./components/EventList";
 import TagList from "./components/Tags";
@@ -36,6 +36,10 @@ class App extends Component {
         }
     }
 
+    onFilterFavs = ({ target: { checked }}) => {
+        store.dispatch(filterFavs(checked));
+    }
+
     render() {
         const days = this.props.events.reduce((acc, event) => {
             acc.push(event.day);
@@ -44,9 +48,12 @@ class App extends Component {
 
         return (
             <main>
+                <label htmlFor="only-favs">Show Only Favorites</label>
+                <input type="checkbox" name="favs" id="only-favs" onChange={ this.onFilterFavs }/>
                 <TagList tags={this.props.tags} onTagSelection={this.onTagSelection} />
                 <Nav days={days} />
-                <EventList events={this.props.events} tags={this.props.filter} onFav={this.onFav}/>
+                <EventList events={this.props.events} filters={this.props.filter}
+                    onFav={this.onFav} favs={this.props.favorites} />
             </main>
         );
     }
