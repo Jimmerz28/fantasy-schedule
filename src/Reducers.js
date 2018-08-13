@@ -2,10 +2,9 @@
 
 import { compareAsc, format, parse } from "date-fns";
 import { combineReducers } from "redux";
-
 import { ADD_FAVORITE, ADD_TAG, FILTER_FAVORITES, RECEIVE_EVENTS, REMOVE_FAVORITE, REMOVE_TAG } from "./Actions";
 import { headerDateFormat } from "./constants";
-import type { VanillaEvent, DaysEvents } from "./types";
+import type { DaysEvents, VanillaEvent } from "./types";
 
 function events(state = [], { type, events }: { type: string, events: Array<VanillaEvent> }) {
     switch (type) {
@@ -58,17 +57,11 @@ function filter(state = filters, { type, tag, checked = false }) {
 
         // @NOTE: Not sure if we need add/remove to be separate
         case ADD_TAG:
-            return Object.assign(state, {
-                tags: [...state.tags, tag]
-            });
+            return {...state, tags: [...state.tags, tag] };
         case REMOVE_TAG:
-            return Object.assign(state, {
-                tags: state.tags.filter(current => current !== tag)
-            });
+            return { ...state, tags: state.tags.filter(current => current !== tag) };
         case FILTER_FAVORITES:
-            return Object.assign(state, {
-                onlyFavs: checked
-            });
+            return { ...state, onlyFavs: checked };
         default:
             return state;
     }

@@ -2,12 +2,11 @@ import "./App.css";
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
-import { fetchPosts, addTag, removeTag, addFavorite, removeFavorite, filterFavs } from "./Actions";
+import { addFavorite, addTag, fetchPosts, filterFavs, removeFavorite, removeTag } from "./Actions";
 import store from "./Store";
 import EventList from "./components/EventList";
-import TagList from "./components/Tags";
 import Nav from "./components/Nav";
+import TagList from "./components/Tags";
 
 const mapStateToProps = state => {
     return {
