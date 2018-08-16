@@ -1,5 +1,6 @@
 :root {
     --color-platinum: #e5ece9;
+    --color-magenta: #f90093;
 }
 
 .tags {
@@ -8,20 +9,13 @@
 }
 
 .tag {
-    padding: .5rem 1rem;
+    padding: .5rem .5rem .5rem 1rem;
     background-color: var(--color-platinum);
     border-radius: 1rem;
     margin: .5rem;
     display: flex;
     justify-content: center;
-}
-
-.tag > svg {
-    transform: scale3d(0,0,0);
-    transition: margin .9s cubic-bezier(0.230, 1.000, 0.320, 1.000), transform .2s ease-in-out;
-    transform-origin: center;
-    margin-top: -1px;
-    margin-left: -20px;
+    overflow: hidden;
 }
 
 .tag > input {
@@ -31,13 +25,31 @@
     padding: 0;
 }
 
-.tag.-checked > svg {
-    transform: scale3d(1, 1, 1);
-    transition: margin .5s cubic-bezier(0.230, 1.000, 0.320, 1.000),
-    transform .3s ease-in-out;
-    margin-left: 0;
+.tag > label > span {
+    position: relative;
+    z-index: 9;
 }
 
-.tag > label {
-    padding-right: 4px;
+.tag > label::after {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    content: "";
+    width: 16px;
+    height: 16px;
+    background-color: var(--color-magenta);
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-top: -3px;
+    margin-left: 5px;
+    transform: scale3d(1,1,1);
+    transition: transform .3s linear,
+    margin .5s cubic-bezier(0.680, -0.550, 0.265, 1.550);
+}
+
+.tag.-checked > label::after {
+    transform: scale3d(200,200,200);
+    transition: transform 1s linear,
+    margin .5s cubic-bezier(0.680, -0.550, 0.265, 1.550);
+    margin-left: -.7rem;
 }

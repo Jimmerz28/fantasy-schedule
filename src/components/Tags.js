@@ -1,6 +1,5 @@
 import classNames from "classnames/bind";
 import React from 'react';
-import CancelIcon from "./CancelIcon.js";
 import styles from './Tags.module.css';
 
 let cx = classNames.bind(styles);
@@ -16,9 +15,8 @@ const TagList = ({tags, selectedTags, onTagSelection}) => {
 
         return (
             <div key={tag} className={classes}>
-                <label htmlFor={tag}>{tag.slice(6)}</label>
+                <label htmlFor={tag}><span>{tag.slice(6)}</span></label>
                 <input type="checkbox" name={tag} id={tag} onChange={onTagSelection} checked={checked} />
-                <CancelIcon />
             </div>
         );
     });
