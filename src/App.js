@@ -2,7 +2,14 @@ import "./App.css";
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addFavorite, addTag, fetchPosts, filterFavs, removeFavorite, removeTag } from "./Actions";
+import {
+    addFavorite,
+    addTag,
+    fetchPosts,
+    filterFavs,
+    removeFavorite,
+    removeTag
+} from "./Actions";
 import store from "./Store";
 import EventList from "./components/EventList";
 import Nav from "./components/Nav";
@@ -15,29 +22,30 @@ const mapStateToProps = state => {
 };
 
 class App extends Component {
+
     componentDidMount() {
         store.dispatch(fetchPosts());
     }
 
-    onTagSelection = ({target: {name, checked}}) => {
+    onTagSelection = ({ target: { name, checked } }) => {
         if (checked) {
             store.dispatch(addTag(name));
         } else {
             store.dispatch(removeTag(name));
         }
-    }
+    };
 
-    onFav = ({target: { id, checked }}) => {
+    onFav = ({ target: { id, checked } }) => {
         if (checked) {
             store.dispatch(addFavorite(id));
         } else {
             store.dispatch(removeFavorite(id));
         }
-    }
+    };
 
-    onFilterFavs = ({ target: { checked }}) => {
+    onFilterFavs = ({ target: { checked } }) => {
         store.dispatch(filterFavs(checked));
-    }
+    };
 
     render() {
         const days = this.props.events.reduce((acc, event) => {
@@ -47,12 +55,27 @@ class App extends Component {
 
         return (
             <main>
-                <label htmlFor="only-favs">Show Only Favorites</label>
-                <input type="checkbox" name="favs" id="only-favs" onChange={ this.onFilterFavs }/>
-                <TagList tags={this.props.tags} onTagSelection={this.onTagSelection} />
+                <div className="tag">
+                    <label htmlFor="only-favs">Show Only Favorites</label>
+                    <input
+                        type="checkbox"
+                        name="favs"
+                        id="only-favs"
+                        onChange={this.onFilterFavs}
+                    />
+                </div>
+                <TagList
+                    tags={this.props.tags}
+                    onTagSelection={this.onTagSelection}
+                    selectedTags={this.props.filter.tags}
+                />
                 <Nav days={days} />
-                <EventList events={this.props.events} filters={this.props.filter}
-                    onFav={this.onFav} favs={this.props.favorites} />
+                <EventList
+                    events={this.props.events}
+                    filters={this.props.filter}
+                    onFav={this.onFav}
+                    favs={this.props.favorites}
+                />
             </main>
         );
     }

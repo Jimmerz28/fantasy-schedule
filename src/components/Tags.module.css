@@ -1,0 +1,43 @@
+:root {
+    --color-platinum: #e5ece9;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tag {
+    padding: .5rem 1rem;
+    background-color: var(--color-platinum);
+    border-radius: 1rem;
+    margin: .5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.tag > svg {
+    transform: scale3d(0,0,0);
+    transition: margin .9s cubic-bezier(0.230, 1.000, 0.320, 1.000), transform .2s ease-in-out;
+    transform-origin: center;
+    margin-top: -1px;
+    margin-left: -20px;
+}
+
+.tag > input {
+    opacity: 0;
+    width: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.tag.-checked > svg {
+    transform: scale3d(1, 1, 1);
+    transition: margin .5s cubic-bezier(0.230, 1.000, 0.320, 1.000),
+    transform .3s ease-in-out;
+    margin-left: 0;
+}
+
+.tag > label {
+    padding-right: 4px;
+}
