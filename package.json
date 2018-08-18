@@ -13,7 +13,7 @@
         "redux-thunk": "^2.3.0"
     },
     "scripts": {
-        "prestart": "json-server server.js --port 3001 &",
+        "prestart": "json-server ./mocks/events.json --port=3001 --read-only &",
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test --env=jsdom",
