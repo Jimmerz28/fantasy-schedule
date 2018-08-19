@@ -1,6 +1,5 @@
 :root {
     --color-platinum: #e5ece9;
-    --color-magenta: #f90093;
 }
 
 .tags {
@@ -9,6 +8,7 @@
 }
 
 .tag {
+    --tag-color: transparent;
     padding: .5rem .5rem .5rem 1rem;
     background-color: var(--color-platinum);
     border-radius: 1rem;
@@ -37,7 +37,7 @@
     content: "";
     width: 16px;
     height: 16px;
-    background-color: var(--color-magenta);
+    background-color: var(--tag-color);
     border-radius: 50%;
     vertical-align: middle;
     margin-top: -3px;

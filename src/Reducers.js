@@ -3,7 +3,7 @@
 import { compareAsc, format, parse } from "date-fns";
 import { combineReducers } from "redux";
 import { ADD_FAVORITE, ADD_TAG, FILTER_FAVORITES, RECEIVE_EVENTS, REMOVE_FAVORITE, REMOVE_TAG } from "./Actions";
-import { headerDateFormat } from "./constants";
+import { colors, headerDateFormat } from "./constants";
 import {createDate} from "./helpers";
 import type { DaysEvents, VanillaEvent } from "./types";
 
@@ -45,7 +45,14 @@ function events(state = [], { type, events }: { type: string, events: Array<Vani
 function tags(state = [], { type, events }) {
     switch (type) {
         case RECEIVE_EVENTS:
-            return [...new Set(events.map(event => event['Event Type']))];
+            return [...new Set(events.map(event => event['Event Type']))]
+                .sort()
+                .map((tag, index) => {
+                    return {
+                        tag,
+                        color: colors[index]
+                    }
+                });
         default:
             return state;
     }
