@@ -14,15 +14,25 @@ import store from "./Store";
 import EventList from "./components/EventList";
 import Nav from "./components/Nav";
 import TagList from "./components/Tags";
+import { filteredEvents } from "./selectors";
 
 const mapStateToProps = state => {
+
+    const { tags, favorites, filter } = state;
+
     return {
-        ...state
+        tags,
+        favorites,
+        filter,
+        events: filteredEvents(state),
+        days: state.events.reduce((acc, event) => {
+            acc.push(event.day);
+            return acc;
+        }, [])
     };
 };
 
 class App extends Component {
-
     componentDidMount() {
         store.dispatch(fetchPosts());
     }
@@ -48,11 +58,6 @@ class App extends Component {
     };
 
     render() {
-        const days = this.props.events.reduce((acc, event) => {
-            acc.push(event.day);
-            return acc;
-        }, []);
-
         return (
             <main>
                 <div className="tag">
@@ -69,10 +74,9 @@ class App extends Component {
                     onTagSelection={this.onTagSelection}
                     selectedTags={this.props.filter.tags}
                 />
-                <Nav days={days} />
+                <Nav days={this.props.days} />
                 <EventList
                     events={this.props.events}
-                    filters={this.props.filter}
                     onFav={this.onFav}
                     favs={this.props.favorites}
                 />

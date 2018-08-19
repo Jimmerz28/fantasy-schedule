@@ -4,6 +4,7 @@ import { compareAsc, format, parse } from "date-fns";
 import { combineReducers } from "redux";
 import { ADD_FAVORITE, ADD_TAG, FILTER_FAVORITES, RECEIVE_EVENTS, REMOVE_FAVORITE, REMOVE_TAG } from "./Actions";
 import { headerDateFormat } from "./constants";
+import {createDate} from "./helpers";
 import type { DaysEvents, VanillaEvent } from "./types";
 
 function events(state = [], { type, events }: { type: string, events: Array<VanillaEvent> }) {
@@ -13,6 +14,8 @@ function events(state = [], { type, events }: { type: string, events: Array<Vani
 
             // We want to split up the date events into days
             const chunked = events.reduce((acc: Array<DaysEvents>, event: VanillaEvent) => {
+
+                event["Start Date & Time"] = createDate(event["Start Date & Time"]);
 
                 const day: string = format(event["Start Date & Time"], headerDateFormat);
                 const found: void | DaysEvents = acc.find(chunk => chunk.day === day);
