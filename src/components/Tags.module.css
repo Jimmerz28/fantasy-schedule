@@ -1,7 +1,3 @@
-:root {
-    --color-platinum: #e5ece9;
-}
-
 .tags {
     grid-column: col-start 10 / span 2;
     grid-row: 1 / -1;
@@ -16,13 +12,18 @@
 .tag {
     --tag-color: transparent;
     padding: .5rem .5rem .5rem 1rem;
-    background-color: var(--color-platinum);
+    background-color: white;
+    border: 1px #ecedee solid;
     border-radius: 1rem;
     margin: .5rem;
     display: flex;
     justify-content: center;
     overflow: hidden;
     overflow-wrap: break-word;
+}
+
+.tag.-checked {
+    border-color: transparent;
 }
 
 .tag > input {

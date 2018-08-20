@@ -1,23 +1,24 @@
-// Generated via http://phrogz.net/css/distinct-colors.html
+// Generated via http://tools.medialab.sciences-po.fr/iwanthue/index.php
 export const colors = [
-    "#8c0000",
-    "#f28100",
-    "#7f6600",
-    "#40ffbf",
-    "#79aaf2",
-    "#cc66aa",
-    "#332626",
-    "#ffe1bf",
-    "#ace639",
-    "#00d6e6",
-    "#161659",
-    "#400022",
-    "#e58273",
-    "#332200",
-    "#397339",
-    "#203540",
-    "#ce3df2",
-    "#ff0066"
+    "#d7f2cc",
+    "#88aee1",
+    "#e6d3a5",
+    "#cec9f3",
+    "#b9cda1",
+    "#dfbbe3",
+    "#96bfad",
+    "#e8a9a5",
+    "#90d3e0",
+    "#f3d7b6",
+    "#a5cbeb",
+    "#ccb295",
+    "#b9aace",
+    "#c1e2d3",
+    "#dfb9be",
+    "#c7dfee",
+    "#ead9c9",
+    "#a9b6cc",
+    "#e5d1e3"
 ];
 
 export const dateTimeFormat = "MM/dd/yyyy hh:mm aaa";
