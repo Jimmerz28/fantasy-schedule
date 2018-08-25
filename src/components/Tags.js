@@ -22,7 +22,11 @@ const TagList = ({tags, selectedTags, onTagSelection}) => {
         );
     });
 
-    return <form className={styles.tags}>{ list }</form>;
+    return (
+        <div className={styles.tags}>
+            <form>{list}</form>
+        </div>
+    );
 };
 
 export default TagList;

@@ -3,3 +3,21 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.app {
+    display: grid;
+    grid-template-columns: repeat(12, [col-start] 1fr);
+    grid-template-rows: 1rem;
+}
+
+.tag.-fav {
+    grid-column: col-start 1 / span 12;
+}
+
+nav {
+    grid-column: col-start / span 8;
+}
+
+.events {
+    grid-column: col-start / span 8;
+}

@@ -29,7 +29,7 @@ const EventList = ({ events, onFav, favs }) => {
     });
 
     return (
-        <div>
+        <div className="events">
             <ul>{list}</ul>
         </div>
     );

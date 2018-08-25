@@ -59,8 +59,8 @@ class App extends Component {
 
     render() {
         return (
-            <main>
-                <div className="tag">
+            <main className="app">
+                <div className="tag -fav">
                     <label htmlFor="only-favs">Show Only Favorites</label>
                     <input
                         type="checkbox"
