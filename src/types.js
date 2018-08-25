@@ -39,3 +39,8 @@ export type DaysEvents = {
     day: string,
     events: Array<VanillaEvent>
 }
+
+export type NaviDay = {
+    value: string,
+    formatted: string
+}

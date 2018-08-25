@@ -14,7 +14,7 @@ import store from "./Store";
 import EventList from "./components/EventList";
 import Nav from "./components/Nav";
 import TagList from "./components/Tags";
-import { filteredEvents } from "./selectors";
+import { eventDays, filteredEvents } from "./selectors";
 
 const mapStateToProps = state => {
 
@@ -25,10 +25,7 @@ const mapStateToProps = state => {
         favorites,
         filter,
         events: filteredEvents(state),
-        days: state.events.reduce((acc, event) => {
-            acc.push(event.day);
-            return acc;
-        }, [])
+        days: eventDays(state)
     };
 };
 

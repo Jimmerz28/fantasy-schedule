@@ -1,4 +1,6 @@
+import { format, parse } from "date-fns";
 import { createSelector } from "reselect";
+import { headerDateFormat, naviDateFormat } from "./constants";
 
 const getEvents = state => state.events;
 const getSelectedTags = state => state.filter.tags;
@@ -33,5 +35,21 @@ export const filteredEvents = createSelector(
         }
 
         return filterdResults;
+    }
+);
+
+export const eventDays = createSelector(
+    [getEvents],
+    (events) => {
+        return events.reduce((acc, event) => {
+            acc.push({
+                value: event.day,
+                formatted: format(
+                    parse(event.day, headerDateFormat, new Date()),
+                    naviDateFormat
+                )
+            });
+            return acc;
+        }, []);
     }
 );
