@@ -1,0 +1,24 @@
+.event-days > ul {
+    list-style: none;
+    display: flex;
+}
+
+.event-days > ul > li:not(:last-child) {
+    margin-right: 2rem;
+}
+
+.event-days a:link,
+.event-days a:visited,
+.event-days a:active,
+.event-days a:target {
+    text-decoration: none;
+    color: black;
+}
+
+a {
+    padding-bottom: 12px;
+}
+
+a.-active {
+    border-bottom: 2px #a3c4bc solid;
+}
