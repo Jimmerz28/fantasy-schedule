@@ -1,4 +1,6 @@
 import React from 'react';
+import { headerDateFormat } from "../constants";
+import { createDayID } from "../helpers";
 
 const EventList = ({ events, onFav, favs }) => {
 
@@ -14,13 +16,16 @@ const EventList = ({ events, onFav, favs }) => {
                         <p>{event["Title"]}</p>
                         <p>{event["Event Type"]}</p>
                         <label htmlFor={id}>Favorite</label>
-                        <input type="checkbox" name={id} id={id} onChange={onFav} checked={checked} />
+                        <input type="checkbox" name={id} id={id}
+                            onChange={onFav} checked={checked} />
                     </li>
                 );
             });
 
         return (
-            <div key={day} id={day}>
+
+            // @TODO: Format ID to be the same as in the Tags.js
+            <div key={day} id={ createDayID(day, headerDateFormat) }>
                 <h2>{day}</h2>
                 <ul>{daysEvents}</ul>
             </div>
