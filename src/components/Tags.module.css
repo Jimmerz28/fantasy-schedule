@@ -1,5 +1,5 @@
 .tags {
-    grid-column: col-start 10 / span 2;
+    grid-column: col-start 9 / span 5;
     grid-row: 1 / -1;
 }
 
@@ -48,7 +48,6 @@
     background-color: var(--tag-color);
     border-radius: 50%;
     vertical-align: middle;
-    margin-top: -3px;
     margin-left: 5px;
     transform: scale3d(1,1,1);
     transition: transform .3s linear,
