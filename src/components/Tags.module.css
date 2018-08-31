@@ -27,10 +27,17 @@
 }
 
 .tag > input {
-    opacity: 0;
-    width: 0;
-    margin: 0;
-    padding: 0;
+
+    /* Hide content visually but not from screenreads
+       https://webaim.org/techniques/css/invisiblecontent/ */
+
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+.tag > label {
+    display: flex;
+    align-items: center;
 }
 
 .tag > label > span {
