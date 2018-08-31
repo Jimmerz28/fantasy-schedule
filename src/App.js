@@ -11,6 +11,7 @@ import {
     removeTag
 } from "./Actions";
 import store from "./Store";
+import Dialog from "./components/Dialog";
 import EventList from "./components/EventList";
 import Nav from "./components/Nav";
 import TagList from "./components/Tags";
@@ -34,6 +35,11 @@ class App extends Component {
         store.dispatch(fetchPosts());
     }
 
+    state = {
+        showDialog: false,
+        currentEvent: ""
+    }
+
     onTagSelection = ({ target: { name, checked } }) => {
         if (checked) {
             store.dispatch(addTag(name));
@@ -54,9 +60,17 @@ class App extends Component {
         store.dispatch(filterFavs(checked));
     };
 
+    onShowDialog = (id) => {
+        this.setState({
+            showDialog: true,
+            currentEvent: id
+        });
+    }
+
     render() {
         return (
             <main className="app">
+                <Dialog show={this.state.showDialog} event={this.state.currentEvent} />
                 <div className="tag -fav">
                     <label htmlFor="only-favs">Show Only Favorites</label>
                     <input
@@ -76,6 +90,7 @@ class App extends Component {
                     events={this.props.events}
                     onFav={this.onFav}
                     favs={this.props.favorites}
+                    showDialog={ this.onShowDialog }
                 />
             </main>
         );

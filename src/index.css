@@ -17,7 +17,3 @@ body {
 nav {
     grid-column: col-start / span 8;
 }
-
-.events {
-    grid-column: col-start / span 8;
-}

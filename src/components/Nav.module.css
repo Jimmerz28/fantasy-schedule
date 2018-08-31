@@ -3,8 +3,16 @@
     display: flex;
 }
 
-.event-days > ul > li:not(:last-child) {
-    margin-right: 2rem;
+.event-days > ul > li {
+    height: 3rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.event-days>ul>li.-active {
+    padding: 0 1rem;
+    border-bottom: 2px #a3c4bc solid;
 }
 
 .event-days a:link,
@@ -13,12 +21,4 @@
 .event-days a:target {
     text-decoration: none;
     color: black;
-}
-
-a {
-    padding-bottom: 12px;
-}
-
-a.-active {
-    border-bottom: 2px #a3c4bc solid;
 }

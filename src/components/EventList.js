@@ -1,8 +1,9 @@
 import React from 'react';
 import { headerDateFormat } from "../constants";
 import { createDayID } from "../helpers";
+import styles from "./EventList.module.css";
 
-const EventList = ({ events, onFav, favs }) => {
+const EventList = ({ events, onFav, favs, showDialog }) => {
 
     const list = events.map(({ day, events }) => {
 
@@ -12,7 +13,7 @@ const EventList = ({ events, onFav, favs }) => {
                 const checked = favs.includes(id);
 
                 return (
-                    <li key={id}>
+                    <li key={id} onClick={ showDialog.bind(this, id) }>
                         <p>{event["Title"]}</p>
                         <p>{event["Event Type"]}</p>
                         <label htmlFor={id}>Favorite</label>
@@ -23,8 +24,6 @@ const EventList = ({ events, onFav, favs }) => {
             });
 
         return (
-
-            // @TODO: Format ID to be the same as in the Tags.js
             <div key={day} id={ createDayID(day, headerDateFormat) }>
                 <h2>{day}</h2>
                 <ul>{daysEvents}</ul>
@@ -34,7 +33,7 @@ const EventList = ({ events, onFav, favs }) => {
     });
 
     return (
-        <div className="events">
+        <div className={ styles.events }>
             <ul>{list}</ul>
         </div>
     );

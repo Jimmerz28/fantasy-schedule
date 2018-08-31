@@ -37,8 +37,8 @@ class Nav extends Component<P, S> {
 
             const classes = classNames({ [styles["-active"]]: (href === this.state.activeDay) });
 
-            return <li key={value}>
-                    <a href={ href } onClick={this.onClick} className={classes}>
+            return <li key={value} className={classes}>
+                    <a href={href} onClick={this.onClick}>
                         {formatted}
                     </a>
                 </li>;
