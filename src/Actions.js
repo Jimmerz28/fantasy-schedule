@@ -18,7 +18,7 @@ export function fetchPosts() {
     return function (dispatch) {
         dispatch(requestEvents);
 
-        return fetch("http://localhost:3001/events")
+        return fetch(process.env.REACT_APP_EVENTS_URL)
             .then(res => res.json(), error => console.error(error))
 
             .then(json => {
