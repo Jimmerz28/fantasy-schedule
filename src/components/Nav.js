@@ -20,12 +20,8 @@ class Nav extends Component<P, S> {
         activeDay: ''
     };
 
-    componentDidMount = () => {
-        console.info("mounted");
-    }
-
-    onClick = ({ target } : { target: HTMLAnchorElement }) => {
-        this.setState({ activeDay: target.hash });
+    onClick = ({ target: { hash } }: { target: HTMLAnchorElement }) => {
+        this.setState({ activeDay: hash });
     }
 
     render() {
