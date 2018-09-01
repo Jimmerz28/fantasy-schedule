@@ -1,8 +1,9 @@
 // @flow
 
-import classNames from "classnames";
 import React, { Component } from 'react';
+
 import type { NaviDay } from "../types";
+import classNames from "classnames";
 import styles from "./Nav.module.css";
 
 type P = {
@@ -23,8 +24,8 @@ class Nav extends Component<P, S> {
         console.info("mounted");
     }
 
-    onClick = (event) => {
-        this.setState({ activeDay: event.target.hash });
+    onClick = ({ target } : { target: HTMLAnchorElement }) => {
+        this.setState({ activeDay: target.hash });
     }
 
     render() {

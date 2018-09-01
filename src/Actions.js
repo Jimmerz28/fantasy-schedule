@@ -66,3 +66,18 @@ export function filterFavs(checked) {
         checked
     }
 }
+
+export const SHOW_DIALOG = "DIALOG::SHOW";
+export function showDialog(id) {
+    return {
+        type: SHOW_DIALOG,
+        id
+    }
+}
+
+export const HIDE_DIALOG = "DIALOG:HIDE";
+export function hideDialog() {
+    return {
+        type: HIDE_DIALOG
+    }
+}

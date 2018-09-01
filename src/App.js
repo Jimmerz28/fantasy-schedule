@@ -1,21 +1,24 @@
 import "./App.css";
 
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import {
     addFavorite,
     addTag,
     fetchPosts,
     filterFavs,
+    hideDialog,
     removeFavorite,
-    removeTag
+    removeTag,
+    showDialog
 } from "./Actions";
-import store from "./Store";
+import { chosenEvent, eventDays, filteredEvents } from "./selectors";
+
 import Dialog from "./components/Dialog";
 import EventList from "./components/EventList";
 import Nav from "./components/Nav";
 import TagList from "./components/Tags";
-import { eventDays, filteredEvents } from "./selectors";
+import { connect } from "react-redux";
+import store from "./Store";
 
 const mapStateToProps = state => {
 
@@ -25,6 +28,8 @@ const mapStateToProps = state => {
         tags,
         favorites,
         filter,
+        showDialog: state.dialog.show,
+        dialogEvent: chosenEvent(state),
         events: filteredEvents(state),
         days: eventDays(state)
     };
@@ -33,11 +38,6 @@ const mapStateToProps = state => {
 class App extends Component {
     componentDidMount() {
         store.dispatch(fetchPosts());
-    }
-
-    state = {
-        showDialog: false,
-        currentEvent: ""
     }
 
     onTagSelection = ({ target: { name, checked } }) => {
@@ -60,17 +60,24 @@ class App extends Component {
         store.dispatch(filterFavs(checked));
     };
 
+    // @NOTE: Check if we can replace this with the native .showModal() API, however,
+    // will need a polyfill since support is shitty on mobile
     onShowDialog = (id) => {
-        this.setState({
-            showDialog: true,
-            currentEvent: id
-        });
+        store.dispatch(showDialog(id));
+    }
+
+    onHideDialog = () => {
+        store.dispatch(hideDialog());
     }
 
     render() {
         return (
             <main className="app">
-                <Dialog show={this.state.showDialog} event={this.state.currentEvent} />
+                <Dialog
+                    show={this.props.showDialog}
+                    event={this.props.dialogEvent}
+                    onClose={this.onHideDialog}
+                />
                 <div className="tag -fav">
                     <label htmlFor="only-favs">Show Only Favorites</label>
                     <input
@@ -90,7 +97,7 @@ class App extends Component {
                     events={this.props.events}
                     onFav={this.onFav}
                     favs={this.props.favorites}
-                    showDialog={ this.onShowDialog }
+                    showDialog={this.onShowDialog}
                 />
             </main>
         );
