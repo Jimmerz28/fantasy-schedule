@@ -17,8 +17,10 @@ const Dialog = ({ show, event, onClose }: { show: boolean, event: VanillaEvent, 
 
     return (
         <dialog {...visible}>
-            <button type="button" onClick={onClose}>Close</button>
-            <EventDetail event={event} />
+            <section>
+                <button type="button" onClick={onClose}>Close</button>
+                <EventDetail event={event} />
+            </section>
         </dialog>
     );
 }
