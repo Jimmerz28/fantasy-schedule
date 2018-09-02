@@ -1,22 +1,14 @@
 // @flow
 
-import EventDetail from "./EventDetail";
 import React from 'react';
+
 import type { VanillaEvent } from '../types';
+import styles from './Dialog.module.css';
+import EventDetail from './EventDetail';
 
 const Dialog = ({ show, event, onClose }: { show: boolean, event: VanillaEvent, onClose: Function }) => {
-
-    // If the user hasn't selected an event don't even bother rendering
-    if (!event) {
-        return null;
-    }
-
-    const visible = {
-        open: (show === true) ? true : null
-    };
-
     return (
-        <dialog {...visible}>
+        <dialog className={styles["event-dialog"]}>
             <section>
                 <button type="button" onClick={onClose}>Close</button>
                 <EventDetail event={event} />

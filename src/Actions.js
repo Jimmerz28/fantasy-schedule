@@ -67,17 +67,10 @@ export function filterFavs(checked) {
     }
 }
 
-export const SHOW_DIALOG = "DIALOG::SHOW";
-export function showDialog(id) {
+export const SELECT_EVENT = "EVENT::SELECTED";
+export function selectEvent(id) {
     return {
-        type: SHOW_DIALOG,
+        type: SELECT_EVENT,
         id
-    }
-}
-
-export const HIDE_DIALOG = "DIALOG:HIDE";
-export function hideDialog() {
-    return {
-        type: HIDE_DIALOG
     }
 }

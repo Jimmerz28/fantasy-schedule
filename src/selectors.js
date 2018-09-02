@@ -1,16 +1,16 @@
 // @flow
 
-import type { DaysEvents, VanillaEvent } from "./types";
 import { format, parse } from "date-fns";
-import { headerDateFormat, naviDateFormat } from "./constants";
-
 import { createSelector } from "reselect";
+
+import { headerDateFormat, naviDateFormat } from "./constants";
+import type { DaysEvents, VanillaEvent } from "./types";
 
 const getEvents = state => state.events;
 const getSelectedTags = state => state.filter.tags;
 const getFavs = state => state.favorites;
 const isOnlyFavorites = state => state.filter.onlyFavs;
-const selectedEventID = state => state.dialog.id;
+const selectedEventID = state => state.selectedEvent;
 
 export const filteredEvents = createSelector(
     [getSelectedTags, isOnlyFavorites, getFavs, getEvents],
@@ -62,14 +62,14 @@ export const eventDays = createSelector(
 export const chosenEvent = createSelector(
     [filteredEvents, selectedEventID],
     (events: Array<DaysEvents>, eventID: string) => {
-        let testValue = null;
+        let selectedEvent = null;
 
         events.some(({ day, events }) => {
-            testValue = events.find((singleEvent: VanillaEvent) => singleEvent["Game ID"] === eventID)
+            selectedEvent = events.find((singleEvent: VanillaEvent) => singleEvent["Game ID"] === eventID)
 
-            return testValue;
+            return selectedEvent;
         });
 
-        return testValue;
+        return selectedEvent;
     }
 );

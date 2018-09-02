@@ -1,12 +1,12 @@
-import './polyfills';
 import './index.css';
 
-import App from './App';
-import { Provider } from "react-redux";
 import React from 'react';
 import ReactDOM from 'react-dom';
-import registerServiceWorker from './registerServiceWorker';
+import { Provider } from "react-redux";
+
+import App from './App';
 import store from "./Store";
+import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
     <Provider store={ store }>

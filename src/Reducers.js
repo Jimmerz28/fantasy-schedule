@@ -1,12 +1,12 @@
 // @flow
 
-import { ADD_FAVORITE, ADD_TAG, FILTER_FAVORITES, HIDE_DIALOG, RECEIVE_EVENTS, REMOVE_FAVORITE, REMOVE_TAG, SHOW_DIALOG } from "./Actions";
-import type { DaysEvents, VanillaEvent } from "./types";
-import { colors, headerDateFormat } from "./constants";
 import { compareAsc, format, parse } from "date-fns";
-
 import { combineReducers } from "redux";
-import {createDate} from "./helpers";
+
+import { ADD_FAVORITE, ADD_TAG, FILTER_FAVORITES, RECEIVE_EVENTS, REMOVE_FAVORITE, REMOVE_TAG, SELECT_EVENT } from "./Actions";
+import { colors, headerDateFormat } from "./constants";
+import { createDate } from "./helpers";
+import type { DaysEvents, VanillaEvent } from "./types";
 
 function events(state = [], { type, events }: { type: string, events: Array<VanillaEvent> }) {
     switch (type) {
@@ -68,7 +68,7 @@ function filter(state = filters, { type, tag, checked = false }) {
 
         // @NOTE: Not sure if we need add/remove to be separate
         case ADD_TAG:
-            return {...state, tags: [...state.tags, tag] };
+            return { ...state, tags: [...state.tags, tag] };
         case REMOVE_TAG:
             return { ...state, tags: state.tags.filter(current => current !== tag) };
         case FILTER_FAVORITES:
@@ -89,16 +89,10 @@ function favorites(state = [], { type, eventID }) {
     }
 }
 
-const dialogState = {
-    show: false,
-    id: ''
-};
-function dialog(state = dialogState, { type, id }) {
-    switch(type) {
-        case SHOW_DIALOG:
-            return { show: true, id };
-        case HIDE_DIALOG:
-            return { ...state, show: false };
+function selectedEvent(state = '', { type, id }) {
+    switch (type) {
+        case SELECT_EVENT:
+            return id;
         default:
             return state;
     }
@@ -109,7 +103,7 @@ const genconApp = combineReducers({
     tags,
     favorites,
     filter,
-    dialog
+    selectedEvent
 });
 
 export default genconApp;

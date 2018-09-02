@@ -1,24 +1,24 @@
 import "./App.css";
 
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
 import {
     addFavorite,
     addTag,
     fetchPosts,
     filterFavs,
-    hideDialog,
     removeFavorite,
     removeTag,
-    showDialog
+    selectEvent
 } from "./Actions";
-import { chosenEvent, eventDays, filteredEvents } from "./selectors";
-
+import store from "./Store";
 import Dialog from "./components/Dialog";
 import EventList from "./components/EventList";
 import Nav from "./components/Nav";
 import TagList from "./components/Tags";
-import { connect } from "react-redux";
-import store from "./Store";
+import dialogPolyfill from './polyfills';
+import { chosenEvent, eventDays, filteredEvents } from "./selectors";
 
 const mapStateToProps = state => {
 
@@ -28,7 +28,6 @@ const mapStateToProps = state => {
         tags,
         favorites,
         filter,
-        showDialog: state.dialog.show,
         dialogEvent: chosenEvent(state),
         events: filteredEvents(state),
         days: eventDays(state)
@@ -38,6 +37,14 @@ const mapStateToProps = state => {
 class App extends Component {
     componentDidMount() {
         store.dispatch(fetchPosts());
+
+        dialogPolyfill.registerDialog(this.eventDialog);
+    }
+
+    get eventDialog(): HTMLDialogElement {
+        const eventDialog = document.querySelector('dialog');
+
+        return eventDialog;
     }
 
     onTagSelection = ({ target: { name, checked } }) => {
@@ -63,43 +70,46 @@ class App extends Component {
     // @NOTE: Check if we can replace this with the native .showModal() API, however,
     // will need a polyfill since support is shitty on mobile
     onShowDialog = (id) => {
-        store.dispatch(showDialog(id));
+        store.dispatch(selectEvent(id));
+        this.eventDialog.showModal();
     }
 
     onHideDialog = () => {
-        store.dispatch(hideDialog());
+        this.eventDialog.close();
     }
 
     render() {
         return (
-            <main className="app">
+            <div>
                 <Dialog
                     show={this.props.showDialog}
                     event={this.props.dialogEvent}
                     onClose={this.onHideDialog}
                 />
-                <div className="tag -fav">
-                    <label htmlFor="only-favs">Show Only Favorites</label>
-                    <input
-                        type="checkbox"
-                        name="favs"
-                        id="only-favs"
-                        onChange={this.onFilterFavs}
+                <main className="app">
+                    <div className="tag -fav">
+                        <label htmlFor="only-favs">Show Only Favorites</label>
+                        <input
+                            type="checkbox"
+                            name="favs"
+                            id="only-favs"
+                            onChange={this.onFilterFavs}
+                        />
+                    </div>
+                    <TagList
+                        tags={this.props.tags}
+                        onTagSelection={this.onTagSelection}
+                        selectedTags={this.props.filter.tags}
                     />
-                </div>
-                <TagList
-                    tags={this.props.tags}
-                    onTagSelection={this.onTagSelection}
-                    selectedTags={this.props.filter.tags}
-                />
-                <Nav days={this.props.days} />
-                <EventList
-                    events={this.props.events}
-                    onFav={this.onFav}
-                    favs={this.props.favorites}
-                    showDialog={this.onShowDialog}
-                />
-            </main>
+                    <Nav days={this.props.days} />
+                    <EventList
+                        events={this.props.events}
+                        onFav={this.onFav}
+                        favs={this.props.favorites}
+                        showDialog={this.onShowDialog}
+                    />
+                </main>
+            </div>
         );
     }
 }

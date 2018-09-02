@@ -1,10 +1,16 @@
 // @flow
 
 import React from 'react';
-import type { VanillaEvent } from '../types';
+
 import { eventStartEndTime } from '../helpers';
+import type { VanillaEvent } from '../types';
 
 const EventDetail = ({ event }: { event: VanillaEvent }) => {
+
+    if (!event) {
+        return null;
+    }
+
     return (
         <div>
             <h1>{event["Title"]}</h1>
