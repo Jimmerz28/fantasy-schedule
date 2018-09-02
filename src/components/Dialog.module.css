@@ -1,18 +1,7 @@
-/* .event-dialog {
+.event-dialog {
     position: sticky;
     width: 35rem;
     background-color: white;
-} */
-
-dialog::backdrop {
-    background: linear-gradient(45deg, rgba(0, 143, 104, .5), rgba(250, 224, 66, .5));
-}
-
-dialog+.backdrop {
-    background: linear-gradient(45deg, rgba(0, 143, 104, .5), rgba(250, 224, 66, .5));
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    top: 50vh;
+    transform: translateY(-50%);
 }
