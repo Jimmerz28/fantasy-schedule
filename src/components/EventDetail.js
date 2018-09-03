@@ -1,9 +1,9 @@
 // @flow
 
 import React from 'react';
-
 import { eventStartEndTime } from '../helpers';
 import type { VanillaEvent } from '../types';
+import styles from "./EventDetail.module.css";
 
 const EventDetail = ({ event }: { event: VanillaEvent }) => {
 
@@ -12,10 +12,10 @@ const EventDetail = ({ event }: { event: VanillaEvent }) => {
     }
 
     return (
-        <div>
+        <div className={ styles["event-detail"] }>
             <h1>{event["Title"]}</h1>
             <p>{eventStartEndTime(event)}</p>
-            <p className="location">
+            <p className={ styles["location"] }>
                 <span>{event["Location"]}</span>
                 <span>{event["Room Name"]}</span>
                 <span>{event["Table Number"]}</span>
