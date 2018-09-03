@@ -1,7 +1,11 @@
-.event-dialog {
-    position: sticky;
-    width: 35rem;
-    background-color: white;
+.event-dialog
+{
+    position: fixed;
     top: 50vh;
+
+    width: 35rem;
+
     transform: translateY(-50%);
+
+    background-color: white;
 }
