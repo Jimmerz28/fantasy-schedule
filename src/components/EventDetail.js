@@ -5,11 +5,16 @@ import { eventStartEndTime } from '../helpers';
 import type { VanillaEvent } from '../types';
 import styles from "./EventDetail.module.css";
 
-const EventDetail = ({ event }: { event: VanillaEvent }) => {
+const EventDetail = ({ event, relatedEvents }: { event: VanillaEvent, relatedEvents: Array<VanillaEvent> }) => {
 
     if (!event) {
         return null;
     }
+
+    // @TODO: Make this look nicer
+    const related = relatedEvents.map(single => (
+        <li key={single["Game ID"]}>{single["Start Date & Time"].toString()}</li>
+    ));
 
     return (
         <div className={ styles["event-detail"] }>
@@ -23,6 +28,8 @@ const EventDetail = ({ event }: { event: VanillaEvent }) => {
             <p>{event["Short Description"]}</p>
             <p>{event["Long Description"]}</p>
             <p>{event["Event Type"].slice(6)}</p>
+            <h2>Related Events</h2>
+            <ul>{related}</ul>
         </div>
     );
 }

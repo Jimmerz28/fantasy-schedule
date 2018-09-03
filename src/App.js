@@ -2,7 +2,6 @@ import "./App.css";
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
 import {
     addFavorite,
     addTag,
@@ -18,7 +17,7 @@ import EventList from "./components/EventList";
 import Nav from "./components/Nav";
 import TagList from "./components/Tags";
 import dialogPolyfill from './polyfills';
-import { chosenEvent, eventDays, filteredEvents } from "./selectors";
+import { chosenEvent, eventDays, filteredEvents, relatedEvents } from "./selectors";
 
 const mapStateToProps = state => {
 
@@ -30,6 +29,7 @@ const mapStateToProps = state => {
         filter,
         dialogEvent: chosenEvent(state),
         events: filteredEvents(state),
+        relatedEvents: relatedEvents(state),
         days: eventDays(state)
     };
 };
@@ -84,6 +84,7 @@ class App extends Component {
                 <Dialog
                     show={this.props.showDialog}
                     event={this.props.dialogEvent}
+                    relatedEvents={this.props.relatedEvents}
                     onClose={this.onHideDialog}
                 />
                 <main className="app">

@@ -2,7 +2,6 @@
 
 import { format, parse } from "date-fns";
 import { createSelector } from "reselect";
-
 import { headerDateFormat, naviDateFormat } from "./constants";
 import type { DaysEvents, VanillaEvent } from "./types";
 
@@ -71,5 +70,23 @@ export const chosenEvent = createSelector(
         });
 
         return selectedEvent;
+    }
+);
+
+export const relatedEvents = createSelector(
+    [filteredEvents, chosenEvent],
+    (filteredEvents: Array<DaysEvents>, chosenEvent: VanillaEvent) => {
+
+        if (!chosenEvent) {
+            return [];
+        }
+
+        return filteredEvents.reduce((acc, { day, events }) => {
+            const related = events.filter(event => (
+                event["Title"] === chosenEvent["Title"]) &&
+                (event["Game ID"] !== chosenEvent["Game ID"]));
+            acc.push(...related);
+            return acc;
+        }, []);
     }
 );
