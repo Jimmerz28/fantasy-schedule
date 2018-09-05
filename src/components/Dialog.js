@@ -6,8 +6,13 @@ import type { VanillaEvent } from '../types';
 import styles from './Dialog.module.css';
 import EventDetail from './EventDetail';
 
-const Dialog = ({ show, event, onClose, relatedEvents }:
-        { show: boolean, event: VanillaEvent, onClose: Function, relatedEvents: Array<VanillaEvent> }) => {
+const Dialog = ({ show, event, onClose, relatedEvents }: {
+            show: boolean,
+            event: VanillaEvent,
+            onClose: Function,
+            relatedEvents: Array<VanillaEvent>
+        }) => {
+
     return (
         <dialog className={ styles["event-dialog"] }>
             <section>

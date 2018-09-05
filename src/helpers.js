@@ -22,7 +22,9 @@ export function eventStartEndTime(event: VanillaEvent) {
 export function chunkEvents(events) {
     const chunked = events.reduce((acc: Array<DaysEvents>, event: VanillaEvent) => {
 
-        event["Start Date & Time"] = createDate(event["Start Date & Time"]);
+        if (typeof event["Start Date & Time"] === "string") {
+            event["Start Date & Time"] = createDate(event["Start Date & Time"]);
+        }
 
         const day: string = format(event["Start Date & Time"], headerDateFormat);
         const found: void | DaysEvents = acc.find(chunk => chunk.day === day);

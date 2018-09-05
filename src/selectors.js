@@ -2,7 +2,9 @@
 
 import { format, parse } from "date-fns";
 import { createSelector } from "reselect";
+
 import { headerDateFormat, naviDateFormat } from "./constants";
+import { chunkEvents } from "./helpers";
 import type { DaysEvents, VanillaEvent } from "./types";
 
 const getEvents = state => state.events;
@@ -82,12 +84,14 @@ export const relatedEvents = createSelector(
             return [];
         }
 
-        return filteredEvents.reduce((acc, { day, events }) => {
+        const flatList = filteredEvents.reduce((acc, { day, events }) => {
             const related = events.filter(event => (
                 event["Title"] === chosenEvent["Title"]) &&
                 (event["Game ID"] !== chosenEvent["Game ID"]));
             acc.push(...related);
             return acc;
         }, []);
+
+        return chunkEvents(flatList);
     }
 );
