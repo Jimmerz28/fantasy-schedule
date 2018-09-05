@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+
 import type { VanillaEvent } from '../types';
 import styles from './Dialog.module.css';
 import EventDetail from './EventDetail';
@@ -11,7 +12,8 @@ const Dialog = ({ show, event, onClose, relatedEvents }:
         <dialog className={ styles["event-dialog"] }>
             <section>
                 <button type="button" onClick={onClose}>Close</button>
-                <EventDetail event={event} relatedEvents={relatedEvents}/>
+                { event  &&
+                    <EventDetail event={event} relatedEvents={relatedEvents}/> }
             </section>
         </dialog>
     );
