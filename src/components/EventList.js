@@ -1,6 +1,8 @@
 import React from 'react';
-import { createDayID } from "../helpers";
+
 import { headerDateFormat } from "../constants";
+import { createDayID } from "../helpers";
+import Event from './Event';
 import styles from "./EventList.module.css";
 
 const EventList = ({ events, onFav, favs, showDialog }) => {
@@ -10,17 +12,17 @@ const EventList = ({ events, onFav, favs, showDialog }) => {
         const daysEvents = events.map(event => {
 
                 const id = event["Game ID"];
-                const checked = favs.includes(id);
+                const isFav = favs.includes(id);
 
                 // @TODO: Don't trigger the dialog if the favorite input is clicked
                 return (
-                    <li key={id} onClick={ showDialog.bind(this, id) }>
-                        <p>{event["Title"]}</p>
-                        <p>{event["Event Type"]}</p>
-                        <label htmlFor={id}>Favorite</label>
-                        <input type="checkbox" name={id} id={id}
-                            onChange={onFav} checked={checked} />
-                    </li>
+                    <Event
+                        key={ id }
+                        event={ event }
+                        isFav={ isFav }
+                        onClick={ showDialog }
+                        onFav={ onFav }
+                    />
                 );
             });
 
