@@ -1,9 +1,9 @@
 // @flow
 
+import classNames from "classnames";
 import React, { Component } from 'react';
 
 import type { NaviDay } from "../types";
-import classNames from "classnames";
 import styles from "./Nav.module.css";
 
 type P = {
@@ -28,11 +28,12 @@ class Nav extends Component<P, S> {
 
         const { days } = this.props;
 
-        const list = days.map(({ value, formatted }: { value: string, formatted: string }) => {
+        const list = days.map(({ value, formatted }: { value: string, formatted: string }, i) => {
 
             const href = `#${formatted}`.replace(" ", "-");
 
-            const classes = classNames({ [styles["-active"]]: (href === this.state.activeDay) });
+            // If no date is chosen mark the first as "active"
+            const classes = classNames({ [styles["-active"]]: (href === this.state.activeDay) || (i === 0) });
 
             return <li key={value} className={classes}>
                     <a href={href} onClick={this.onClick}>
