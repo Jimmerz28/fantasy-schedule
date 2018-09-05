@@ -73,6 +73,7 @@ export const chosenEvent = createSelector(
     }
 );
 
+
 export const relatedEvents = createSelector(
     [filteredEvents, chosenEvent],
     (filteredEvents: Array<DaysEvents>, chosenEvent: VanillaEvent) => {
