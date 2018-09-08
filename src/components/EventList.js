@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 
 import { headerDateFormat } from "../constants";
@@ -5,7 +7,14 @@ import { createDayID } from "../helpers";
 import Event from './Event';
 import styles from "./EventList.module.css";
 
-const EventList = ({ events, onFav, favs, showDialog }) => {
+type Props = {
+    events: DaysEvents,
+    onFav: Function,
+    favs: Array<string>,
+    onEventClick: Function
+}
+
+const EventList = ({ events, onFav, favs, onEventClick }: Props) => {
 
     const list = events.map(({ day, events }) => {
 
@@ -20,7 +29,7 @@ const EventList = ({ events, onFav, favs, showDialog }) => {
                         key={ id }
                         event={ event }
                         isFav={ isFav }
-                        onClick={ showDialog }
+                        onClick={ onEventClick }
                         onFav={ onFav }
                     />
                 );

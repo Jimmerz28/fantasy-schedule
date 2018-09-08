@@ -108,7 +108,7 @@ class App extends Component {
                         events={this.props.events}
                         onFav={this.onFav}
                         favs={this.props.favorites}
-                        showDialog={this.onShowDialog}
+                        onEventClick={this.onShowDialog}
                     />
                 </main>
             </div>
