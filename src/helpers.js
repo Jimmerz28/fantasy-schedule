@@ -35,7 +35,7 @@ export function chunkEvents(events) {
         if (found) {
             found.events.push(event);
         } else {
-            acc.push({ day, events: [] });
+            acc.push({ day, events: [event] });
         }
 
         return acc;
