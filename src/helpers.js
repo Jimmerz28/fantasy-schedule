@@ -1,3 +1,5 @@
+// @flow
+
 import { format, parse } from "date-fns";
 import { compareAsc } from "date-fns";
 

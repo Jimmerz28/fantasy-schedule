@@ -16,6 +16,7 @@ import store from "./Store";
 import Dialog from "./components/Dialog";
 import EventList from "./components/EventList";
 import Nav from "./components/Nav";
+import RelatedEvents from "./components/RelatedEvents";
 import TagList from "./components/Tags";
 import dialogPolyfill from './polyfills';
 import { chosenEvent, eventDays, filteredEvents, relatedEvents } from "./selectors";
@@ -80,12 +81,24 @@ class App extends Component {
     }
 
     render() {
+
+        const relatedEvents = this.props.relatedEvents.length > 0 && (
+            <RelatedEvents>
+                <EventList
+                    events={ this.props.relatedEvents }
+                    onFav={ this.onFav }
+                    onEventClick={ () => console.info("clicked") }
+                    favs={ this.props.favorites }
+                />
+            </RelatedEvents>
+        );
+
         return (
             <div>
                 <Dialog
                     show={this.props.showDialog}
                     event={this.props.dialogEvent}
-                    relatedEvents={this.props.relatedEvents}
+                    relatedEvents={relatedEvents}
                     onClose={this.onHideDialog}
                 />
                 <main className="app">

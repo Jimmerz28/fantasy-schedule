@@ -7,7 +7,7 @@ import type { VanillaEvent } from '../types';
 import styles from "./EventDetail.module.css";
 import RelatedEvents from './RelatedEvents';
 
-const EventDetail = ({ event, relatedEvents }: { event: VanillaEvent, relatedEvents: Array<VanillaEvent> }) => {
+const EventDetail = ({ event, relatedEvents }: { event: VanillaEvent, relatedEvents: RelatedEvents }) => {
 
     return (
         <div className={ styles["event-detail"] }>
@@ -21,8 +21,7 @@ const EventDetail = ({ event, relatedEvents }: { event: VanillaEvent, relatedEve
             <p>{event["Short Description"]}</p>
             <p>{event["Long Description"]}</p>
             <p>{event["Event Type"].slice(6)}</p>
-            { (relatedEvents.length > 0) &&
-                <RelatedEvents relatedEvents={ relatedEvents }/> }
+            { relatedEvents }
         </div>
     );
 }
