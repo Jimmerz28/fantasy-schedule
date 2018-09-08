@@ -21,7 +21,8 @@
         "build": "react-scripts build",
         "test": "react-scripts test --env=jsdom",
         "eject": "react-scripts eject",
-        "deploy": "gh-pages -d build"
+        "deploy": "yarn build && gh-pages -d build",
+        "flow": "flow"
     },
     "devDependencies": {
         "flow-bin": "^0.79.1",

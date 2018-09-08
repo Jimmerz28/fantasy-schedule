@@ -4,7 +4,7 @@ import { format, parse } from "date-fns";
 import { compareAsc } from "date-fns";
 
 import { dateFormat, dateTimeFormat, headerDateFormat, naviDateFormat } from "./constants";
-import type { VanillaEvent } from './types';
+import type { DaysEvents, VanillaEvent } from './types';
 
 export function createDate(date, withTime = true) {
     const format = withTime ? dateTimeFormat : dateFormat;
@@ -22,7 +22,7 @@ export function eventStartEndTime(event: VanillaEvent) {
     return `${format(event["Start Date & Time"], "EEE. MMM d, h:mm aaa")} - ${format(end, "h:mm aaa")}`;
 }
 
-export function chunkEvents(events) {
+export function chunkEvents(events: Array<VanillaEvent>) {
     const chunked = events.reduce((acc: Array<DaysEvents>, event: VanillaEvent) => {
 
         if (typeof event["Start Date & Time"] === "string") {
