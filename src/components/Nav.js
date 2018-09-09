@@ -33,7 +33,9 @@ class Nav extends Component<P, S> {
             const href = `#${formatted}`.replace(" ", "-");
 
             // If no date is chosen mark the first as "active"
-            const classes = classNames({ [styles["-active"]]: (href === this.state.activeDay) || (i === 0) });
+            const classes = classNames({
+                [styles["-active"]]: (this.state.activeDay === '' && i === 0) || (this.state.activeDay === href)
+            });
 
             return <li key={value} className={classes}>
                     <a href={href} onClick={this.onClick}>
