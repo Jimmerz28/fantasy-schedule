@@ -1,7 +1,0 @@
-.events {
-    grid-column: col-start / span 8;
-}
-
-.events li:hover {
-    background-color: #f8f991;
-}

@@ -2,7 +2,6 @@ import "./App.css";
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
 import {
     addFavorite,
     addTag,
@@ -14,6 +13,7 @@ import {
 } from "./Actions";
 import store from "./Store";
 import Dialog from "./components/Dialog";
+import Events from "./components/Events";
 import EventList from "./components/EventList";
 import Nav from "./components/Nav";
 import RelatedEvents from "./components/RelatedEvents";
@@ -117,12 +117,14 @@ class App extends Component {
                         selectedTags={this.props.filter.tags}
                     />
                     <Nav days={this.props.days} />
-                    <EventList
-                        events={this.props.events}
-                        onFav={this.onFav}
-                        favs={this.props.favorites}
-                        onEventClick={this.onShowDialog}
-                    />
+                    <Events>
+                        <EventList
+                            events={this.props.events}
+                            onFav={this.onFav}
+                            favs={this.props.favorites}
+                            onEventClick={this.onShowDialog}
+                        />
+                    </Events>
                 </main>
             </div>
         );

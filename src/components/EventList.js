@@ -5,7 +5,6 @@ import React from 'react';
 import { headerDateFormat } from "../constants";
 import { createDayID } from "../helpers";
 import Event from './Event';
-import styles from "./EventList.module.css";
 
 type Props = {
     events: DaysEvents,
@@ -36,19 +35,15 @@ const EventList = ({ events, onFav, favs, onEventClick }: Props) => {
             });
 
         return (
-            <div key={day} id={ createDayID(day, headerDateFormat) }>
+            <li key={day} id={ createDayID(day, headerDateFormat) }>
                 <h2>{day}</h2>
                 <ul>{daysEvents}</ul>
-            </div>
+            </li>
         );
 
     });
 
-    return (
-        <div className={ styles.events }>
-            <ul>{list}</ul>
-        </div>
-    );
+    return <ul>{list}</ul>;
 }
 
 export default EventList;
