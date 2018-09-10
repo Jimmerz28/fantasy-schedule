@@ -5,9 +5,10 @@ import React from 'react';
 import { headerDateFormat } from "../constants";
 import { createDayID } from "../helpers";
 import Event from './Event';
+import type { DaysEvents } from "../types";
 
 type Props = {
-    events: DaysEvents,
+    events: Array<DaysEvents>,
     onFav: Function,
     favs: Array<string>,
     onEventClick: Function

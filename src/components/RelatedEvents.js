@@ -1,8 +1,14 @@
-import React from 'react';
+// @flow
 
-import type { VanillaEvent } from '../types';
+import * as React from 'react';
 
-const RelatedEvents = ({ relatedEvents, children }): { relatedEvents: Array<VanillaEvent> } => {
+import type { VanillaEvent } from "../types";
+import EventList from "./EventList";
+
+const RelatedEvents = ({ relatedEvents, children }:
+    { relatedEvents: Array<VanillaEvent>,
+      children: React.Element<typeof EventList>
+    }) => {
 
     return (
         <div>

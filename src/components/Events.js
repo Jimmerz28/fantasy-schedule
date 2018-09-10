@@ -1,7 +1,9 @@
-import React from "react";
+// @flow
+
+import * as React from "react";
 import styles from "./Events.module.css";
 
-const Events = ({ children }) => {
+const Events = ({ children }: { children: React.Element<typeof EventList>}) => {
     return (
         <div className={styles.events}>
             {children}

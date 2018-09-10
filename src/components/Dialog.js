@@ -1,16 +1,17 @@
 // @flow
 
-import React from 'react';
+import * as React from 'react';
 
 import type { VanillaEvent } from '../types';
 import styles from './Dialog.module.css';
 import EventDetail from './EventDetail';
+import EventList from "./EventList";
 
 const Dialog = ({ show, event, onClose, relatedEvents }: {
             show: boolean,
             event: VanillaEvent,
             onClose: Function,
-            relatedEvents: Array<VanillaEvent>
+            relatedEvents: React.Element<typeof EventList>
         }) => {
 
     return (

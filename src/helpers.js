@@ -6,13 +6,13 @@ import { compareAsc } from "date-fns";
 import { dateFormat, dateTimeFormat, headerDateFormat, naviDateFormat } from "./constants";
 import type { DaysEvents, VanillaEvent } from './types';
 
-export function createDate(date, withTime = true) {
+export function createDate(date: string, withTime: boolean = true) {
     const format = withTime ? dateTimeFormat : dateFormat;
 
     return parse(date, format, new Date());
 }
 
-export function createDayID(date, stringFormat) {
+export function createDayID(date: string, stringFormat: string) {
     return format(parse(date, stringFormat, new Date()), naviDateFormat).replace(" ", "-");
 }
 
