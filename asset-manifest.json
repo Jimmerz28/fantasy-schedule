@@ -1,11 +1,11 @@
 {
   "runtime~main.js": "/fantasy-schedule/static/js/runtime~main.a0c08f7a.js",
   "runtime~main.js.map": "/fantasy-schedule/static/js/runtime~main.a0c08f7a.js.map",
-  "vendors.css": "/fantasy-schedule/static/css/vendors.1f552ebb.chunk.css",
-  "vendors.js": "/fantasy-schedule/static/js/vendors.b226187e.chunk.js",
-  "vendors.js.map": "/fantasy-schedule/static/js/vendors.b226187e.chunk.js.map",
-  "main.css": "/fantasy-schedule/static/css/main.a3774221.chunk.css",
-  "main.js": "/fantasy-schedule/static/js/main.280a36a8.chunk.js",
-  "main.js.map": "/fantasy-schedule/static/js/main.280a36a8.chunk.js.map",
+  "vendors.css": "/fantasy-schedule/static/css/vendors.0db4bee1.chunk.css",
+  "vendors.js": "/fantasy-schedule/static/js/vendors.e940651c.chunk.js",
+  "vendors.js.map": "/fantasy-schedule/static/js/vendors.e940651c.chunk.js.map",
+  "main.css": "/fantasy-schedule/static/css/main.58d5462d.chunk.css",
+  "main.js": "/fantasy-schedule/static/js/main.b9d75d5d.chunk.js",
+  "main.js.map": "/fantasy-schedule/static/js/main.b9d75d5d.chunk.js.map",
   "index.html": "/fantasy-schedule/index.html"
 }
