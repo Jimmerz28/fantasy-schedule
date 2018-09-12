@@ -1,6 +1,9 @@
 .event {
     display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
+}
+
+.event > p {
+    flex: 0 0 10rem;
+    font-size: 2rem;
+    margin-top: .8rem;
 }
