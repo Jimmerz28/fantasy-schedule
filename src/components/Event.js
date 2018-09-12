@@ -13,10 +13,15 @@ const Event = ({ event, onClick, onFav, isFav }) => {
             <div>
                 <p>{event["Title"]}</p>
                 <p>{event["Event Type"].slice(6)}</p>
-                <label htmlFor={id}>Favorite</label>
-                <input type="checkbox" name={id} id={id}
-                    onChange={onFav} checked={isFav} />
             </div>
+            <label htmlFor={id}>Favorite</label>
+            <input
+                type="checkbox"
+                name={id}
+                id={id}
+                onChange={onFav}
+                checked={isFav}
+            />
         </li>
     );
 }

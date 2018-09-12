@@ -3,7 +3,16 @@
 }
 
 .event > p {
-    flex: 0 0 10rem;
+    flex: 0 1 10rem;
     font-size: 2rem;
     margin-top: .8rem;
+    align-self: stretch;
+}
+
+.event > div {
+    flex: 1 1 auto;
+}
+
+.event > label {
+    display: none;
 }
