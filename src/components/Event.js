@@ -1,5 +1,6 @@
 import React from "react";
 
+import { eventStartTime } from "../helpers";
 import styles from "./Event.module.css";
 
 const Event = ({ event, onClick, onFav, isFav }) => {
@@ -8,6 +9,7 @@ const Event = ({ event, onClick, onFav, isFav }) => {
 
     return (
         <li className={styles.event} onClick={onClick.bind(this, id)}>
+            <p>{eventStartTime(event)}</p>
             <p>{event["Title"]}</p>
             <p>{event["Event Type"]}</p>
             <label htmlFor={id}>Favorite</label>

@@ -22,6 +22,7 @@ export const colors = [
 ];
 
 export const dateTimeFormat = "MM/dd/yyyy hh:mm aaa";
+export const eventTime = "p";
 export const dateFormat = "M/dd/yyyy";
 export const headerDateFormat = "eeee, LLL d";
 export const naviDateFormat = "MMM d";

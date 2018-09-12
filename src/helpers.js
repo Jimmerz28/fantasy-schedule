@@ -2,7 +2,7 @@
 
 import { compareAsc, format, parse } from "date-fns";
 
-import { dateFormat, dateTimeFormat, headerDateFormat, naviDateFormat } from "./constants";
+import { dateFormat, dateTimeFormat, eventTime, headerDateFormat, naviDateFormat } from "./constants";
 import type { DaysEvents, VanillaEvent } from './types';
 
 export function createDate(date: string, withTime: boolean = true) {
@@ -41,10 +41,22 @@ export function chunkEvents(events: Array<VanillaEvent>) {
 
     }, []);
 
-    return chunked.sort((a, b) => {
+    chunked.sort((a, b) => {
         const first = parse(a.day, headerDateFormat, new Date());
         const next = parse(b.day, headerDateFormat, new Date());
 
         return compareAsc(first, next);
     });
+
+    chunked.forEach(({day, events}) => {
+        events.sort((a1, b1) => compareAsc(a1["Start Date & Time"], b1["Start Date & Time"]));
+    });
+
+    return chunked;
+}
+
+export function eventStartTime(event: VanillaEvent) {
+    let startTime = format(event["Start Date & Time"], eventTime);
+
+    return startTime.replace(":00", "");
 }
