@@ -7,12 +7,14 @@ import styles from './Dialog.module.css';
 import EventDetail from './EventDetail';
 import EventList from "./EventList";
 
-const Dialog = ({ show, event, onClose, relatedEvents }: {
-            show: boolean,
-            event: VanillaEvent,
-            onClose: Function,
-            relatedEvents: React.Element<typeof EventList>
-        }) => {
+type Props = {
+    show: boolean,
+    event: VanillaEvent,
+    onClose: Function,
+    relatedEvents: React.Element<typeof EventList>
+};
+
+const Dialog = ({ show, event, onClose, relatedEvents }: Props) => {
 
     return (
         <dialog className={ styles["event-dialog"] }>

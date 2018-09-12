@@ -1,9 +1,14 @@
 // @flow
 
 import * as React from "react";
+
 import styles from "./Events.module.css";
 
-const Events = ({ children }: { children: React.Element<typeof EventList>}) => {
+type Props = {
+    children: React.Element<typeof EventList>
+}
+
+const Events = ({ children }: Props) => {
     return (
         <div className={styles.events}>
             {children}

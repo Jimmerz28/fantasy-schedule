@@ -1,7 +1,6 @@
 // @flow
 
-import { format, parse } from "date-fns";
-import { compareAsc } from "date-fns";
+import { compareAsc, format, parse } from "date-fns";
 
 import { dateFormat, dateTimeFormat, headerDateFormat, naviDateFormat } from "./constants";
 import type { DaysEvents, VanillaEvent } from './types';

@@ -1,16 +1,18 @@
 // @flow
 
 import * as React from "react";
+
 import { eventStartEndTime } from '../helpers';
 import type { VanillaEvent } from '../types';
 import styles from "./EventDetail.module.css";
 import RelatedEvents from "./RelatedEvents";
 
-const EventDetail = ({ event, relatedEvents }:
-    {
-        event: VanillaEvent,
-        relatedEvents: React.Element<typeof RelatedEvents>
-    }) => {
+type Props = {
+    event: VanillaEvent,
+    relatedEvents: React.Element<typeof RelatedEvents>
+};
+
+const EventDetail = ({ event, relatedEvents }: Props) => {
 
     return (
         <div className={styles["event-detail"]}>

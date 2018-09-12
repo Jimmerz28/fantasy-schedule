@@ -5,10 +5,12 @@ import * as React from 'react';
 import type { VanillaEvent } from "../types";
 import EventList from "./EventList";
 
-const RelatedEvents = ({ relatedEvents, children }:
-    { relatedEvents: Array<VanillaEvent>,
-      children: React.Element<typeof EventList>
-    }) => {
+type Props = {
+    relatedEvents: Array<VanillaEvent>,
+    children: React.Element<typeof EventList>
+}
+
+const RelatedEvents = ({ relatedEvents, children }: Props) => {
 
     return (
         <div>

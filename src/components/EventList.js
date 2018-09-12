@@ -1,11 +1,12 @@
 // @flow
 
-import React from 'react';
+import React from "react";
 
 import { headerDateFormat } from "../constants";
 import { createDayID } from "../helpers";
-import Event from './Event';
 import type { DaysEvents } from "../types";
+import Event from "./Event";
+import styles from "./EventList.module.css";
 
 type Props = {
     events: Array<DaysEvents>,
@@ -44,7 +45,7 @@ const EventList = ({ events, onFav, favs, onEventClick }: Props) => {
 
     });
 
-    return <ul>{list}</ul>;
+    return <ul className={styles["event-list"]}>{list}</ul>;
 }
 
 export default EventList;
