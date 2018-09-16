@@ -1,14 +1,19 @@
-.event {
+.event,
+.event > div {
     display: flex;
 }
 
-.event > p {
-    flex: 0 1 10rem;
+.event > div:first-child > p {
+    flex: 0 0 10rem;
     font-size: 2rem;
     margin-top: .8rem;
     align-self: stretch;
 }
 
-.event > div {
+.event > div:first-child {
     flex: 1 1 auto;
+}
+
+.event > div:last-child {
+    flex: 0 0 12px;
 }

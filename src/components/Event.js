@@ -9,11 +9,13 @@ const Event = ({ event, onClick, onFav, isFav }) => {
     const id = event["Game ID"];
 
     return (
-        <li className={styles.event} onClick={onClick.bind(this, id)}>
-            <p>{eventStartTime(event)}</p>
-            <div>
-                <p>{event["Title"]}</p>
-                <p>{event["Event Type"].slice(6)}</p>
+        <li className={styles.event}>
+            <div onClick={onClick.bind(this, id)}>
+                <p>{eventStartTime(event)}</p>
+                <div>
+                    <p>{event["Title"]}</p>
+                    <p>{event["Event Type"].slice(6)}</p>
+                </div>
             </div>
             <Favorite
                 id={id}

@@ -1,0 +1,49 @@
+.favorite {
+    width: 12px;
+    height: 12px;
+}
+
+.favorite > input,
+.favorite > label > span {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute;
+}
+
+.star {
+    fill: #fced08;
+    stroke: #fced08;
+}
+
+.star>path:first-child {
+    opacity: 0;
+}
+
+.star>path:last-child {
+    opacity: 1;
+}
+
+.star.-checked {
+    animation: activate 300ms ease-in;
+}
+
+.star.-checked > path:first-child {
+    opacity: 1;
+}
+
+.star.-checked > path:last-child {
+    opacity: 0;
+}
+
+@keyframes activate {
+    30% {
+        transform: scale(0.8);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    80% {
+        transform: scale(1.2);
+    }
+}
