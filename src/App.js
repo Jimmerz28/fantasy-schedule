@@ -2,6 +2,7 @@ import "./App.css";
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
 import {
     addFavorite,
     addTag,
@@ -13,8 +14,9 @@ import {
 } from "./Actions";
 import store from "./Store";
 import Dialog from "./components/Dialog";
-import Events from "./components/Events";
 import EventList from "./components/EventList";
+import Events from "./components/Events";
+import Favorite from "./components/Favorite";
 import Nav from "./components/Nav";
 import RelatedEvents from "./components/RelatedEvents";
 import TagList from "./components/Tags";
@@ -103,12 +105,11 @@ class App extends Component {
                 />
                 <main className="app">
                     <div className="tag -fav">
-                        <label htmlFor="only-favs">Show Only Favorites</label>
-                        <input
-                            type="checkbox"
-                            name="favs"
+                        <Favorite
+                            onClick={this.onFilterFavs}
                             id="only-favs"
-                            onChange={this.onFilterFavs}
+                            name="only-favs"
+                            checked={this.props.filter.onlyFavs}
                         />
                     </div>
                     <TagList

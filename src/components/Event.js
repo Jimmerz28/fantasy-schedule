@@ -2,6 +2,7 @@ import React from "react";
 
 import { eventStartTime } from "../helpers";
 import styles from "./Event.module.css";
+import Favorite from "./Favorite";
 
 const Event = ({ event, onClick, onFav, isFav }) => {
 
@@ -14,12 +15,10 @@ const Event = ({ event, onClick, onFav, isFav }) => {
                 <p>{event["Title"]}</p>
                 <p>{event["Event Type"].slice(6)}</p>
             </div>
-            <label htmlFor={id}>Favorite</label>
-            <input
-                type="checkbox"
-                name={id}
+            <Favorite
                 id={id}
-                onChange={onFav}
+                onClick={onFav}
+                name={id}
                 checked={isFav}
             />
         </li>

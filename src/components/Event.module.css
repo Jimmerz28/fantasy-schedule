@@ -12,7 +12,3 @@
 .event > div {
     flex: 1 1 auto;
 }
-
-.event > label {
-    display: none;
-}
