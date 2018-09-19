@@ -2,11 +2,11 @@
 
 import * as React from "react";
 
-import EventList from "./EventList";
-import styles from "./Events.module.css";
+import styles from "./AllEvents.module.css";
+import DaysList from "./DaysList";
 
 type Props = {
-    children: React.Element<typeof EventList>
+    children: React.Element<typeof DaysList>
 }
 
 const Events = ({ children }: Props) => {

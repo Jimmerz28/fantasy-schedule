@@ -3,14 +3,13 @@
 import * as React from 'react';
 
 import type { VanillaEvent } from "../types";
-import EventList from "./EventList";
+import DaysList from "./DaysList";
 
 type Props = {
-    relatedEvents: Array<VanillaEvent>,
-    children: React.Element<typeof EventList>
+    children: React.Element<typeof DaysList>
 }
 
-const RelatedEvents = ({ relatedEvents, children }: Props) => {
+const RelatedEvents = ({ children }: Props) => {
 
     return (
         <div>

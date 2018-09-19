@@ -13,9 +13,9 @@ import {
     selectEvent
 } from "./Actions";
 import storeConfig from "./Store";
+import AllEvents from "./components/AllEvents";
+import DaysList from "./components/DaysList";
 import Dialog from "./components/Dialog";
-import EventList from "./components/EventList";
-import Events from "./components/Events";
 import Favorite from "./components/Favorite";
 import Nav from "./components/Nav";
 import RelatedEvents from "./components/RelatedEvents";
@@ -88,7 +88,7 @@ class App extends Component {
 
         const relatedEvents = this.props.relatedEvents.length > 0 && (
             <RelatedEvents>
-                <EventList
+                <DaysList
                     events={ this.props.relatedEvents }
                     onFav={ this.onFav }
                     onEventClick={ () => console.info("clicked") }
@@ -120,14 +120,14 @@ class App extends Component {
                         selectedTags={this.props.filter.tags}
                     />
                     <Nav days={this.props.days} />
-                    <Events>
-                        <EventList
+                    <AllEvents>
+                        <DaysList
                             events={this.props.events}
                             onFav={this.onFav}
                             favs={this.props.favorites}
                             onEventClick={this.onShowDialog}
                         />
-                    </Events>
+                    </AllEvents>
                 </main>
             </div>
         );

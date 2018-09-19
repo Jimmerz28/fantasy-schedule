@@ -3,14 +3,14 @@
 import * as React from 'react';
 
 import type { VanillaEvent } from '../types';
+import DaysList from "./DaysList";
 import styles from './Dialog.module.css';
 import EventDetail from './EventDetail';
-import EventList from "./EventList";
 
 type Props = {
     event: VanillaEvent,
     onClose: Function,
-    relatedEvents: React.Element<typeof EventList>
+    relatedEvents: React.Element<typeof DaysList>
 };
 
 const Dialog = ({ event, onClose, relatedEvents }: Props) => {
