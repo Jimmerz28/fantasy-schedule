@@ -1,11 +1,19 @@
+import localForage from "localforage";
 import { applyMiddleware, compose, createStore } from "redux";
-
 import { createLogger } from "redux-logger";
-import genconApp from "./Reducers";
+import { persistReducer, persistStore } from "redux-persist";
 import thunkMiddleware from "redux-thunk";
+
+import genconApp from "./Reducers";
 
 const loggerMiddleware = createLogger();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const persistConfig = {
+    key: "gca",
+    storage: localForage
+};
+const persistedReducer = persistReducer(persistConfig, genconApp);
+
 let enhancer = composeEnhancers(applyMiddleware(
     thunkMiddleware,
     loggerMiddleware
@@ -16,8 +24,11 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const store = createStore(
-    genconApp,
+    persistedReducer,
     enhancer
 );
 
-export default store;
+export default () => {
+    const persistor = persistStore(store);
+    return { store, persistor };
+}

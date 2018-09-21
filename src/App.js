@@ -12,7 +12,7 @@ import {
     removeTag,
     selectEvent
 } from "./Actions";
-import store from "./Store";
+import storeConfig from "./Store";
 import Dialog from "./components/Dialog";
 import EventList from "./components/EventList";
 import Events from "./components/Events";
@@ -22,6 +22,8 @@ import RelatedEvents from "./components/RelatedEvents";
 import TagList from "./components/Tags";
 import dialogPolyfill from './polyfills';
 import { chosenEvent, eventDays, filteredEvents, relatedEvents } from "./selectors";
+
+const { store } = storeConfig();
 
 const mapStateToProps = state => {
 
