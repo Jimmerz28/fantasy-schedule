@@ -38,7 +38,7 @@
     "husky": {
         "hooks": {
             "pre-commit": "yarn flow",
-            "pre-push": "yarn flow"
+            "pre-push": "yarn flow && yarn build"
         }
     },
     "browserslist": {
