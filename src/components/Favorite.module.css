@@ -29,14 +29,14 @@
 }
 
 .star.-checked {
-    animation: activate 300ms ease-in;
+    animation: activate 200ms ease-in;
     fill: var(--color-pastel-yellow);
 }
 
 .star.-checked .explosion {
 
     /* "forwards" stops the animation from going back to its initial state */
-    animation: explode .5s linear forwards;
+    animation: explode 400ms linear forwards;
 }
 
 @keyframes activate {
