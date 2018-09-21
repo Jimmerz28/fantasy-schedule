@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 
-import type { VanillaEvent } from "../types";
 import DaysList from "./DaysList";
 
 type Props = {

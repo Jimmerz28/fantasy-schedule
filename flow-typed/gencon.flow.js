@@ -1,5 +1,4 @@
-// @flow
-export type VanillaEvent = {
+declare type GenConEvent = {
     "Game ID": string,
     Group: string,
     Title: string,
@@ -13,7 +12,7 @@ export type VanillaEvent = {
     "Age Required": string,
     "Experience Required": string,
     "Materials Provided": string,
-    "Start Date & Time": string,
+    "Start Date & Time": string | Date,
     Duration: string,
     "End Date & Time": string,
     "GM Names": string,
@@ -33,14 +32,12 @@ export type VanillaEvent = {
     "Last Modified": string
 };
 
-export type Event = VanillaEvent & { isFavorite: boolean };
-
-export type DaysEvents = {
+declare type DaysEvents = {
     day: string,
-    events: Array<VanillaEvent>
+    events: Array<GenConEvent>
 }
 
-export type NaviDay = {
+declare type NaviDay = {
     value: string,
     formatted: string
 }

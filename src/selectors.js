@@ -5,7 +5,6 @@ import { createSelector } from "reselect";
 
 import { headerDateFormat, naviDateFormat } from "./constants";
 import { chunkEvents } from "./helpers";
-import type { DaysEvents, VanillaEvent } from "./types";
 
 const getEvents = state => state.events;
 const getSelectedTags = state => state.filter.tags;
@@ -65,8 +64,8 @@ export const chosenEvent = createSelector(
     (events: Array<DaysEvents>, eventID: string) => {
         let selectedEvent = null;
 
-        events.some(({ day, events }) => {
-            selectedEvent = events.find((singleEvent: VanillaEvent) => singleEvent["Game ID"] === eventID)
+        events.some(({ events }) => {
+            selectedEvent = events.find((singleEvent: GenConEvent) => singleEvent["Game ID"] === eventID)
 
             return selectedEvent;
         });
@@ -78,13 +77,13 @@ export const chosenEvent = createSelector(
 
 export const relatedEvents = createSelector(
     [filteredEvents, chosenEvent],
-    (filteredEvents: Array<DaysEvents>, chosenEvent: VanillaEvent) => {
+    (filteredEvents: Array<DaysEvents>, chosenEvent: GenConEvent) => {
 
         if (!chosenEvent) {
             return [];
         }
 
-        const flatList = filteredEvents.reduce((acc, { day, events }) => {
+        const flatList = filteredEvents.reduce((acc, { events }) => {
             const related = events.filter(event => (
                 event["Title"] === chosenEvent["Title"]) &&
                 (event["Game ID"] !== chosenEvent["Game ID"]));

@@ -3,7 +3,6 @@
 import classNames from "classnames";
 import React, { Component } from 'react';
 
-import type { NaviDay } from "../types";
 import styles from "./Nav.module.css";
 
 type P = {

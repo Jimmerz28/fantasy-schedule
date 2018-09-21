@@ -4,7 +4,6 @@ import React, { Component } from "react";
 
 import { headerDateFormat } from "../constants";
 import { createDayID } from "../helpers";
-import type { DaysEvents } from "../types";
 import styles from "./DaysList.module.css";
 import Event from "./Event";
 

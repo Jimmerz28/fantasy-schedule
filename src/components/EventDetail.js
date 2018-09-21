@@ -3,12 +3,11 @@
 import * as React from "react";
 
 import { eventStartEndTime } from '../helpers';
-import type { VanillaEvent } from '../types';
 import styles from "./EventDetail.module.css";
 import RelatedEvents from "./RelatedEvents";
 
 type Props = {
-    event: VanillaEvent,
+    event: GenConEvent,
     relatedEvents: React.Element<typeof RelatedEvents>
 };
 

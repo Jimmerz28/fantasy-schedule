@@ -3,7 +3,6 @@
 import { compareAsc, format, parse } from "date-fns";
 
 import { dateFormat, dateTimeFormat, eventTime, headerDateFormat, naviDateFormat } from "./constants";
-import type { DaysEvents, VanillaEvent } from './types';
 
 export function createDate(date: string, withTime: boolean = true) {
     const format = withTime ? dateTimeFormat : dateFormat;
@@ -16,13 +15,13 @@ export function createDayID(date: string, stringFormat: string) {
 }
 
 // @TODO: This will need to be more robust since some events are overnight
-export function eventStartEndTime(event: VanillaEvent) {
+export function eventStartEndTime(event: GenConEvent) {
     const end = createDate(event["End Date & Time"]);
     return `${format(event["Start Date & Time"], "EEE. MMM d, h:mm aaa")} - ${format(end, "h:mm aaa")}`;
 }
 
-export function chunkEvents(events: Array<VanillaEvent>) {
-    const chunked = events.reduce((acc: Array<DaysEvents>, event: VanillaEvent) => {
+export function chunkEvents(events: Array<GenConEvent>) {
+    const chunked = events.reduce((acc: Array<DaysEvents>, event: GenConEvent) => {
 
         if (typeof event["Start Date & Time"] === "string") {
             event["Start Date & Time"] = createDate(event["Start Date & Time"]);
@@ -48,14 +47,14 @@ export function chunkEvents(events: Array<VanillaEvent>) {
         return compareAsc(first, next);
     });
 
-    chunked.forEach(({day, events}) => {
+    chunked.forEach(({ events }) => {
         events.sort((a1, b1) => compareAsc(a1["Start Date & Time"], b1["Start Date & Time"]));
     });
 
     return chunked;
 }
 
-export function eventStartTime(event: VanillaEvent) {
+export function eventStartTime(event: GenConEvent) {
     let startTime = format(event["Start Date & Time"], eventTime);
 
     return startTime.replace(":00", "");

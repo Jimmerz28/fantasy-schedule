@@ -1,16 +1,15 @@
 // @flow
 
-import * as React from 'react';
+import * as React from "react";
 
-import type { VanillaEvent } from '../types';
-import DaysList from "./DaysList";
-import styles from './Dialog.module.css';
-import EventDetail from './EventDetail';
+import styles from "./Dialog.module.css";
+import EventDetail from "./EventDetail";
+import RelatedEvents from "./RelatedEvents";
 
 type Props = {
-    event: VanillaEvent,
+    event: GenConEvent,
     onClose: Function,
-    relatedEvents: React.Element<typeof DaysList>
+    relatedEvents: React.Element<typeof RelatedEvents>
 };
 
 const Dialog = ({ event, onClose, relatedEvents }: Props) => {
@@ -18,9 +17,9 @@ const Dialog = ({ event, onClose, relatedEvents }: Props) => {
     return (
         <dialog className={ styles["event-dialog"] }>
             <section>
-                <button type="button" onClick={onClose}>Close</button>
+                <button type="button" onClick={ onClose }>Close</button>
                 { event  &&
-                    <EventDetail event={event} relatedEvents={relatedEvents}/> }
+                    <EventDetail event={ event } relatedEvents={ relatedEvents }/> }
             </section>
         </dialog>
     );

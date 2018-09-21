@@ -1,12 +1,12 @@
 // @flow
 
 import { combineReducers } from "redux";
+
 import { ADD_FAVORITE, ADD_TAG, FILTER_FAVORITES, RECEIVE_EVENTS, REMOVE_FAVORITE, REMOVE_TAG, SELECT_EVENT } from "./Actions";
 import { colors } from "./constants";
 import { chunkEvents } from "./helpers";
-import type { VanillaEvent } from "./types";
 
-function events(state = [], { type, events }: { type: string, events: Array<VanillaEvent> }) {
+function events(state = [], { type, events }: { type: string, events: Array<GenConEvent> }) {
     switch (type) {
 
         case RECEIVE_EVENTS:
