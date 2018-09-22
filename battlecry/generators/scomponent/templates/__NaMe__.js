@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 const __NaMe__ = () => {
     return (
-        <div>__NaMe__</div>
+        <div>__NaMe__ Works!</div>
     );
 }
 
