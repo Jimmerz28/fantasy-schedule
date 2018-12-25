@@ -27,6 +27,10 @@
         "flow": "flow"
     },
     "devDependencies": {
+        "@babel/core": "^7.2.2",
+        "@babel/node": "^7.2.2",
+        "@babel/preset-env": "^7.2.3",
+        "express": "^4.16.4",
         "flow-bin": "^0.81.0",
         "gh-pages": "^1.2.0",
         "husky": "^1.0.0-rc.13",
