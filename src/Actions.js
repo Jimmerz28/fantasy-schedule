@@ -6,7 +6,7 @@ function requestEvents() {
     };
 }
 
-export const RECEIVE_EVENTS = "EVENTS::RECIEVED";
+export const RECEIVE_EVENTS = "EVENTS::RECEIVED";
 function receiveEvents(events) {
     return {
         type: RECEIVE_EVENTS,
@@ -14,8 +14,8 @@ function receiveEvents(events) {
     };
 }
 
-export function fetchPosts() {
-    return function (dispatch) {
+export function fetchEvents() {
+    return function(dispatch) {
         dispatch(requestEvents);
 
         return fetch(process.env.REACT_APP_EVENTS_URL)
