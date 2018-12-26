@@ -15,7 +15,7 @@ importScripts("/fantasy-schedule/workbox-v3.6.2/workbox-sw.js");
 workbox.setConfig({modulePathPrefix: "/fantasy-schedule/workbox-v3.6.2"});
 
 importScripts(
-  "/fantasy-schedule/precache-manifest.dbc61b0aac495c319fd59fa9b20a91e5.js"
+  "/fantasy-schedule/precache-manifest.817c4efc77f711f6e94c5879dbc59b0a.js"
 );
 
 workbox.clientsClaim();
