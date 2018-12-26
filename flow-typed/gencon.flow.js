@@ -32,12 +32,17 @@ declare type GenConEvent = {
     "Last Modified": string
 };
 
+declare type Color = {
+    tag: string,
+    color: string
+};
+
 declare type DaysEvents = {
     day: string,
     events: Array<GenConEvent>
-}
+};
 
 declare type NaviDay = {
     value: string,
     formatted: string
-}
+};

@@ -41,12 +41,6 @@ function tags(state = [], { type, events }) {
         case RECEIVE_EVENTS:
             return [...new Set(events.map(event => event['Event Type']))]
                 .sort()
-                .map((tag, index) => {
-                    return {
-                        tag,
-                        color: colors[index]
-                    }
-                });
         default:
             return state;
     }
