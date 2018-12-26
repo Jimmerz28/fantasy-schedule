@@ -14,7 +14,7 @@ function receiveEvents(events) {
     };
 }
 
-export function fetchEvents() {
+function fetchEvents() {
     return function(dispatch) {
         dispatch(requestEvents);
 
@@ -42,7 +42,7 @@ function receiveColors(colors) {
     };
 }
 
-export function fetchColors() {
+function fetchColors() {
     return function(dispatch) {
         dispatch(requestColors);
 
