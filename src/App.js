@@ -27,10 +27,11 @@ const { store } = storeConfig();
 
 const mapStateToProps = state => {
 
-    const { tags, favorites, filter } = state;
+    const { tags, favorites, filter, colors } = state;
 
     return {
         tags,
+        colors,
         favorites,
         filter,
         dialogEvent: chosenEvent(state),
