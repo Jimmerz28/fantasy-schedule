@@ -54,6 +54,15 @@ export function fetchColors() {
     }
 }
 
+export function fetchAll() {
+    return function(dispatch) {
+        return Promise.all([
+            dispatch(fetchColors()),
+            dispatch(fetchEvents())
+        ]);
+    }
+}
+
 export const ADD_TAG = "TAG::ADD";
 export function addTag(tag) {
     return {

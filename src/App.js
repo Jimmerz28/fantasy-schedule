@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import {
     addFavorite,
     addTag,
-    fetchEvents,
+    fetchAll,
     filterFavs,
     removeFavorite,
     removeTag,
@@ -42,7 +42,7 @@ const mapStateToProps = state => {
 
 class App extends Component {
     componentDidMount() {
-        store.dispatch(fetchEvents());
+        store.dispatch(fetchAll());
 
         dialogPolyfill.registerDialog(this.eventDialog);
     }
