@@ -2,9 +2,26 @@
 
 import { combineReducers } from "redux";
 
-import { ADD_FAVORITE, ADD_TAG, FILTER_FAVORITES, RECEIVE_EVENTS, REMOVE_FAVORITE, REMOVE_TAG, SELECT_EVENT } from "./Actions";
-import { colors } from "./constants";
+import {
+    ADD_FAVORITE,
+    ADD_TAG,
+    FILTER_FAVORITES,
+    RECEIVE_COLORS,
+    RECEIVE_EVENTS,
+    REMOVE_FAVORITE,
+    REMOVE_TAG,
+    SELECT_EVENT
+} from "./Actions";
 import { chunkEvents } from "./helpers";
+
+function colors(state = [], {type, colors}) {
+    switch (type) {
+        case RECEIVE_COLORS:
+            return colors;
+        default:
+            return state;
+    }
+}
 
 function events(state = [], { type, events }: { type: string, events: Array<GenConEvent> }) {
     switch (type) {
@@ -75,6 +92,7 @@ function selectedEvent(state = '', { type, id }) {
 }
 
 const genconApp = combineReducers({
+    colors,
     events,
     tags,
     favorites,
