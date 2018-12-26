@@ -18,6 +18,7 @@
         "reselect": "^3.0.1"
     },
     "scripts": {
+        "prestart": "babel-node server.js &",
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test --env=jsdom",
