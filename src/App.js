@@ -117,6 +117,7 @@ class App extends Component {
                     </div>
                     <TagList
                         tags={this.props.tags}
+                        colors={this.props.colors}
                         onTagSelection={this.onTagSelection}
                         selectedTags={this.props.filter.tags}
                     />
