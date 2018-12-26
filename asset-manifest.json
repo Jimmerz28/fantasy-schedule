@@ -1,6 +1,15 @@
 {
-  "main.css": "/fantasy-schedule/static/css/main.48cccc21.css",
-  "main.css.map": "/fantasy-schedule/static/css/main.48cccc21.css.map",
-  "main.js": "/fantasy-schedule/static/js/main.d6d4ce5c.js",
-  "main.js.map": "/fantasy-schedule/static/js/main.d6d4ce5c.js.map"
+  "main.css": "/fantasy-schedule/static/css/main.373efbc0.chunk.css",
+  "main.js": "/fantasy-schedule/static/js/main.4a08bf85.chunk.js",
+  "main.js.map": "/fantasy-schedule/static/js/main.4a08bf85.chunk.js.map",
+  "static/css/1.d0526c8a.chunk.css": "/fantasy-schedule/static/css/1.d0526c8a.chunk.css",
+  "static/js/1.f1f7a355.chunk.js": "/fantasy-schedule/static/js/1.f1f7a355.chunk.js",
+  "static/js/1.f1f7a355.chunk.js.map": "/fantasy-schedule/static/js/1.f1f7a355.chunk.js.map",
+  "runtime~main.js": "/fantasy-schedule/static/js/runtime~main.a74720d9.js",
+  "runtime~main.js.map": "/fantasy-schedule/static/js/runtime~main.a74720d9.js.map",
+  "static/css/main.373efbc0.chunk.css.map": "/fantasy-schedule/static/css/main.373efbc0.chunk.css.map",
+  "static/css/1.d0526c8a.chunk.css.map": "/fantasy-schedule/static/css/1.d0526c8a.chunk.css.map",
+  "index.html": "/fantasy-schedule/index.html",
+  "precache-manifest.dbc61b0aac495c319fd59fa9b20a91e5.js": "/fantasy-schedule/precache-manifest.dbc61b0aac495c319fd59fa9b20a91e5.js",
+  "service-worker.js": "/fantasy-schedule/service-worker.js"
 }
