@@ -27,6 +27,33 @@ export function fetchEvents() {
     };
 }
 
+export const REQUEST_COLORS = "COLORS::REQUEST";
+function requestColors() {
+    return {
+        type: REQUEST_COLORS
+    };
+}
+
+export const RECEIVE_COLORS = "COLORS::RECEIVED";
+function receiveColors(colors) {
+    return {
+        type: RECEIVE_COLORS,
+        colors
+    };
+}
+
+export function fetchColors() {
+    return function(dispatch) {
+        dispatch(requestColors);
+
+        return fetch(process.env.REACT_APP_COLORS_URL)
+            .then(res => res.json(), error => console.error(error))
+            .then(json => {
+                dispatch(receiveColors(json));
+            });
+    }
+}
+
 export const ADD_TAG = "TAG::ADD";
 export function addTag(tag) {
     return {
