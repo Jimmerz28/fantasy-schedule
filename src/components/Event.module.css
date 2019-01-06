@@ -17,3 +17,17 @@
 .event > div:last-child {
     flex: 0 0 12px;
 }
+
+.event-tag {
+    --circle-size: .5rem;
+    --tag-color: transparent;
+
+    display: inline-block;
+    padding-right: 1.5rem;
+
+    background: radial-gradient(
+        circle var(--circle-size) at center right var(--circle-size),
+        var(--tag-color) var(--circle-size),
+        transparent 100%
+    );
+}
