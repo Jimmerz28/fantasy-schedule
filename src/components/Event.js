@@ -4,7 +4,7 @@ import { eventStartTime } from "../helpers";
 import styles from "./Event.module.css";
 import Favorite from "./Favorite";
 
-const Event = ({ event, onClick, onFav, isFav }) => {
+const Event = ({ event, onClick, onFav, isFav, color }) => {
 
     const id = event["Game ID"];
 
@@ -14,7 +14,12 @@ const Event = ({ event, onClick, onFav, isFav }) => {
                 <p>{eventStartTime(event)}</p>
                 <div>
                     <p>{event["Title"]}</p>
-                    <p>{event["Event Type"].slice(6)}</p>
+                    <p className={styles["event-tag"]} style={{ "--tag-color": color }}>
+                        <span>{event["Location"]}</span>
+                        <span>
+                            {event["Event Type"].slice(6)}
+                        </span>
+                    </p>
                 </div>
             </div>
             <Favorite

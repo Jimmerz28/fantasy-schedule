@@ -94,6 +94,7 @@ class App extends Component {
                     onFav={ this.onFav }
                     onEventClick={ () => console.info("clicked") }
                     favs={ this.props.favorites }
+                    colors={this.props.colors}
                 />
             </RelatedEvents>
         );
@@ -128,6 +129,7 @@ class App extends Component {
                             onFav={this.onFav}
                             favs={this.props.favorites}
                             onEventClick={this.onShowDialog}
+                            colors={this.props.colors}
                         />
                     </AllEvents>
                 </main>
