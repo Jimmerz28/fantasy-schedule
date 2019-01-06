@@ -11,7 +11,8 @@ type Props = {
     events: Array<DaysEvents>,
     onFav: Function,
     favs: Array<string>,
-    onEventClick: Function
+    onEventClick: Function,
+    colors: Array<Color>
 }
 
 class DaysList extends Component<Props> {
@@ -25,6 +26,7 @@ class DaysList extends Component<Props> {
                         events={ events }
                         favs={ this.props.favs }
                         onFav={ this.props.onFav }
+                        colors={ this.props.colors }
                         onEventClick={ this.props.onEventClick }
                     />
                 </li>
