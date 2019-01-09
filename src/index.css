@@ -1,20 +1,30 @@
-@import "../node_modules/dialog-polyfill/dialog-polyfill.css";
+@import '../node_modules/dialog-polyfill/dialog-polyfill.css';
 
-body {
+body
+{
     margin: 0;
     padding: 0;
 }
 
-.app {
+.app
+{
     display: grid;
+
     grid-template-columns: repeat(12, [col-start] 1fr);
     grid-template-rows: 1rem;
 }
 
-.tag.-fav {
+.tag.-fav
+{
     grid-column: col-start 1 / span 12;
 }
 
-nav {
+nav
+{
     grid-column: col-start / span 8;
+}
+
+.modal-open
+{
+    overflow: hidden;
 }

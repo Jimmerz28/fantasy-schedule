@@ -77,11 +77,17 @@ class App extends Component {
     // @NOTE: Check if we can replace this with the native .showModal() API, however,
     // will need a polyfill since support is shitty on mobile
     onShowDialog = (id) => {
+        const body = document.querySelector("body");
+        body.classList.add("modal-open");
+
         store.dispatch(selectEvent(id));
         this.eventDialog.showModal();
     }
 
     onHideDialog = () => {
+        const body = document.querySelector("body");
+        body.classList.remove("modal-open");
+
         this.eventDialog.close();
     }
 

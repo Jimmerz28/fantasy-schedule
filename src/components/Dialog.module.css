@@ -1,9 +1,11 @@
 .event-dialog
 {
-    position: fixed;
-    top: 50vh;
+    top: 50vh !important;
+
+    overflow-y: auto;
 
     width: 35rem;
+    max-height: 100vh;
 
     transform: translateY(-50%);
 
